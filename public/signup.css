@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    /* background-image: linear-gradient(rgb(198, 198, 234), rgb(129, 129, 196)); */
+    background-color:  rgb(192, 200, 246);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 30px;
+    line-height: 30px;
+    background-image: url(../images/images/kp\ img.png);
+    background-repeat: no-repeat;
+    
+}
+
+#form2{
+  left: 150%;
+  transition: all 1s ease;
+}
+
+#form3{
+    left: 300%;
+    transition: all 1s ease;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;}
+
+#pasw{
+    width: 60%;
+    height: 35px;
+    border: solid 2px rgb(137, 157, 220) ;
+    border-radius: 5px;
+    background-color: rgba(86, 86, 176, 0.116);
+    outline: none;
+    color: rgb(218, 218, 244);
+    font-weight: 500;
+    display: flex;
+    padding: 0 15px 0 15px;
+    align-items: center;
+    justify-content: space-between;
+     
+}
+
+.form1 {
+    left: 0%;
+    transition: all 1s ease;
+}
+
+form p{
+    font-size: 20px;
+    font-weight: 500;
+    color:  rgb(160, 141, 244);
+
+}
+
+#div1{
+    width: 45%;
+    height: 85vh;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#div2{
+    width: 45%;
+    height: 85vh;
+    background-color:  rgb(39, 15, 126);;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+#divis {
+    width: 100%; 
+    height: 100%;
+    border-radius: 10px;
+    background-color: blue;
+}
+
+#div3{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* justify-content: space-between; */
+    
+}
+
+input{
+    width: 70%;
+    height: 30px;
+    color:  rgb(160, 141, 244);
+    border: solid 2px rgb(137, 157, 220) ;
+    border-radius: 5px;
+    background-color:  rgba(210, 21, 87, 0);
+    outline: none;
+    color: rgb(218, 218, 244);
+    font-weight: 500;
+    
+    
+}
+
+#password, #Confirm{
+    border: none;
+    width: 70%;
+    height: 30px;
+    background-color:  rgba(210, 21, 87, 0);
+   
+}
+#eye{
+    /* background-color: brown; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showeye {
+    cursor: pointer;
+  }
+  #showeye1 {
+    cursor: pointer;
+  }
+  #hideeye {
+    display: none;
+    cursor: pointer;
+  }
+  #showeye1 {
+    cursor: pointer;
+  }
+
+  #hideeye1 {
+    display: none;
+    cursor: pointer;
+  }
+#pin1{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-between;
+    
+}
+
+
+
+.pinn{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color:  rgb(160, 141, 244);
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+select{
+    width: 15%;
+    height: 25px;
+    border: solid 2px rgb(137, 157, 220) ;
+    border-radius: 5px;
+}
+
+.rad{
+    width: 20px;
+    height: 20px;
+}
+
+#div6{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+button{
+    color:  rgb(160, 141, 244);
+    margin-top: 10px;
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 2px rgb(137, 157, 220) ;
+}
+
+@media (max-width: 430px) {
+    body{
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    #div1{
+       height: 20%;
+       width: 90%;
+    }
+
+
+
+    #div2{
+        width: 90%;
+        height: 70%;
+        
+    }
+
+ 
+
+    
+
+   
+}

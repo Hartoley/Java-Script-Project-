@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="dash.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-storage-compat.js"></script>
+
+
+</head>
+<body>
+
+    
+      <main>
+        <div id="horizontal">
+          <div id="box11">
+            <div id="prop">
+                <img id="profp" src="images/images/picsprofile.png" alt="">
+               
+            </div>
+            <p>Welcome back</p>
+            <p id="welcome">User</p>
+          </div>
+          <div id="home">
+            <div onclick="home()" id="board">
+                <div id="sbaord">
+                  <span id="homee" class="material-symbols-outlined">
+                    home
+                    </span>
+                  <p>Home</p>
+                </div>
+                <span id="material"  class="material-symbols-outlined">
+                  expand_more
+                  </span>
+            </div>
+            <div id="board">
+              <div onclick="dashsetting()" id="sbaord">
+                <span id="homee" class="material-symbols-outlined">
+                  Dashboard
+                  </span>
+                <p >Dashboard</p>
+              </div>
+              <span id="material"  class="material-symbols-outlined">
+                expand_more
+                </span>
+          </div>
+          <div onclick="payment()" id="board">
+            <div id="sbaord">
+              <span id="homee" class="material-symbols-outlined">
+                credit_card
+                </span>
+              <p >Payment</p>
+            </div>
+            <span id="material"  class="material-symbols-outlined">
+              expand_more
+              </span>
+          </div>
+          <div id="board">
+          <div  onclick=distransactions() id="sbaord">
+            <span id="homee" class="material-symbols-outlined">
+              paid
+              </span>
+            <p>Transactions</p>
+          </div>
+          <span id="material"  class="material-symbols-outlined">
+            expand_more
+            </span>
+          </div>
+          <div id="board">
+          <div id="sbaord">
+          <span id="homee" class="material-symbols-outlined">
+            group
+            </span>
+          <p>Customers</p>
+          </div>
+          <span id="material"  class="material-symbols-outlined">
+          expand_more
+          </span>
+          </div>
+          <div id="board">
+          <div id="sbaord">
+          <span id="homee" class="material-symbols-outlined">
+          mail
+          </span>
+          <p>Message</p>
+          </div>
+          <span id="material"  id="material" class="material-symbols-outlined">
+          expand_more
+          </span>
+          </div>
+          <div id="board">
+          <div id="sbaord">
+          <span id="homee" class="material-symbols-outlined">
+          settings
+          </span>
+          <p>Settings</p>
+          </div>
+          <span id="material"  class="material-symbols-outlined">
+          expand_more
+          </span>
+          </div>
+          <div id="board">
+          <div id="sbaord">
+          <span id="homee" class="material-symbols-outlined">
+          monitoring
+          </span>
+          <p>Data</p>
+          </div>
+          <span id="material"  class="material-symbols-outlined">
+          expand_more
+          </span>
+          </div>
+          <div id="board">
+          <div id="sbaord">
+          <span id="homee" class="material-symbols-outlined">
+          report
+          </span>
+          <p>Report</p>
+          </div>
+          <span id="material"  class="material-symbols-outlined">
+          expand_more
+          </span>
+          </div>
+        </div>
+      
+        </div>
+      </div>
+    
+     
+      <div id="body">
+        <header>
+           <marquee id="move" behavior="scroll" direction="left">
+             
+           </marquee>
+        </header>
+        
+        <nav>
+          <div id="menubar">
+            <span class="material-symbols-outlined">
+              menu
+              </span>
+          </div>
+            <div id="search">
+              <div id="dashs">
+                <h5>Dashboard</h5>
+                <p>Payment update</p>
+              </div>
+              <div id="sear">
+                <span class="material-symbols-outlined">
+                  search
+                  </span>
+                <input id="isearch" placeholder="Welcome back" type="text">
+              </div>
+            </div>
+            
+        <div id="boy">
+            
+            <div id="bell">
+              <span class="material-symbols-outlined">
+                notifications
+                </span>
+           
+          </div>
+        </div>
+        <button onclick="signout()" id="log">
+          <span class="material-symbols-outlined">
+            logout
+            </span>
+          Log out
+        </button>
+        </nav>
+        <div id="pincontainer">
+          <div id="pin">
+            <p id="are"> You are about to transfer</p>
+               <div id="aboutto">
+    
+                <p>&#8358;  <span id="showamt">hii</span></p> 
+                <p>To</p>
+                <p id="thereceiver">the</p>
+               </div>
+               <div id="icons">
+                  <div id="hicon">
+                    <span class="material-symbols-outlined">
+                      account_balance
+                      </span>
+                  </div>
+                  <div id="straight"></div>
+                  <div id="hicon">
+                    <span class="material-symbols-outlined">
+                      bolt
+                      </span>
+                  </div>
+               </div>
+               <input id="descript" type="text" placeholder="Description">
+               <div id="pin1">
+               
+                <h6 style="color: white;">Your transaction pin</h6>
+                <div id="pin11">
+                  <input oninput="pinn()" class="pinn" id="p1" type="number" maxlength="1"/>
+                  <input oninput="pinn()" class="pinn" id="p2" type="number" maxlength="1"/>
+                  <input oninput="pinn()" class="pinn" id="p3" type="number" maxlength="1"/>
+                  <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  type = "number"
+                  oninput="pinn()" class="pinn" id="p4" type="number" maxlength="1" />
+                </div>
+               
+               <div id="close">
+                <button onclick="cancel()" id="senditt1">Cancle</button>
+                <button onclick="transfer()" id="senditt">Send</button>
+               </div>
+               
+              </div>
+          </div>
+          <div id="pined">
+            <p id="are"> You are about to Purchase an airtime of</p>
+               <div id="aboutto">
+                
+                <p>&#8358;  <span id="showamt1">hii</span></p> 
+                <p>To</p>
+                <p id="thereceiver1">the</p>
+               </div>
+               <div id="icons">
+                  <div id="hicon">
+                    <span class="material-symbols-outlined">
+                      account_balance
+                      </span>
+                  </div>
+                  <div id="straight"></div>
+                  <div id="hicon">
+                    <span class="material-symbols-outlined">
+                      bolt
+                      </span>
+                  </div>
+               </div>
+               <input id="descript" type="text" placeholder="Description">
+               
+               <div id="pin1">
+                <h6 style="color: white;">Your transaction pin</h6>
+                <div id="pin11">
+                  <input oninput="pinn1()" class="pinn" id="p11" type="number" maxlength="1"/>
+                  <input oninput="pinn1()" class="pinn" id="p21" type="number" maxlength="1"/>
+                  <input oninput="pinn1()" class="pinn" id="p31" type="number" maxlength="1"/>
+                  <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  type = "number"
+                  oninput="pinn1()" class="pinn" id="p41" type="number" maxlength="1" />
+                </div>
+                <div id="close">
+                  <button onclick="cancel()" id="senditt1">Cancle</button>
+                  <button onclick="buyairtime()" id="senditt2">Pay</button>
+                 </div>
+              </div>
+          </div>
+          
+         
+        </div>
+       
+        <div id="dashsetting">
+            <p id="hii"></p>
+          <div id="dupli">
+              <div id="edit">
+                <button id="edp">Edit Profile</button>
+              </div>
+              <p id="username">Username</p>
+              <input class="userinp" id="userinpname" placeholder="Username" type="text">
+              <p id="username">Email address</p>
+              <input class="userinp" id="userinpemail" placeholder="Email address" type="text">
+              <p id="username">Phone number</p>
+              <input class="userinp" id="userinpnumber" placeholder="Phone number" type="text">
+              <p id="username">BVN</p>
+              <input class="userinp" id="userinpbvn" placeholder="BVN" type="text">
+              <p id="username">Current address</p>
+              <input class="userinp" id="userinpaddress" placeholder="Current address" type="text">
+          </div>
+          <div id="dupli">
+            <div id="profilepic">
+              <img id="profileimg" src="images/images/picsprofile.png" alt="">
+              
+            </div>
+              <button id="imgb">
+                <label for="fileInput"> Change your profile image</label>
+                <input onchange="profileimage(event)" id="fileInput" type="file" >
+                
+              </button>
+            <p id="username">Change your password</p>
+              <input class="userinp" id="userinppassword" placeholder="Change your password" type="text">
+              <p id="username">Profession</p>
+              <input class="userinp" id="userinpprofession" placeholder="Profession" type="text">
+              
+              <button onclick="profile1()" id="edp1">Save changes</button>
+
+          </div>
+           
+            
+        </div>
+        <div id="history1">
+          <h1 style="margin-top: 10%;"></h1>
+          <form class="mx-auto shadow w-50 px-5 py-3 mt-3" id="form">
+            <h1 class="text-muted text-center">Sign Up</h1>
+            <input name="username" class="form-control mt-3" required id="raveuser" type="text" placeholder="Description">
+            <input name="email" class="form-control mt-3" required id="raveemail"  type="text" placeholder="Email">
+            <input  class="form-control mt-3" required id="ravephone"  type="text" placeholder="Phone Number">
+            <input name="password" class="form-control mt-3" id="raveamount" required  type="number" placeholder="Amount">
+            <button class="btn btn-dark mt-3">Fund</button>
+        </form>
+        </div>
+        <div id="history">
+        <p id="hii"></p>
+       <div id="historytb">
+        <table id="table">
+          <thead id="top">
+          <th id="th">Transaction Type</th>
+          <th id="th">Account</th>
+          <!-- <th id="th">Receiver's Email </th> -->
+          <th id="th">Amount</th>
+          <th id="th">Transaction ID</th>
+          <th id="th">Time</th>
+          </thead>
+    
+          <tbody id="tbody1">
+            
+          </tbody>
+    
+            
+          </table>
+       </div>
+        </div>
+        <div id="transfer">
+            <div id="transf1">
+              <div id="tran1">
+                <span class="material-symbols-outlined">
+                  description
+                  </span>
+              </div>
+              <p id="trans">Transfers via card number</p>
+              <p id="mon"><span>	&#8358</span> 0.00 </p>
+            </div>
+            <div id="transf2">
+              <div id="tran2">
+                <span class="material-symbols-outlined">
+                  <span class="material-symbols-outlined">
+                    contactless
+                    </span>
+                  </span>
+              </div>
+              <p id="trans">Transfer to other bank</p>
+              <p id="mon"> <span>	&#8358</span> 0.00 </p>
+            </div>
+            <div id="transf3">
+              <div id="tran3">
+                <span class="material-symbols-outlined">
+                  <span class="material-symbols-outlined">
+                    account_balance
+                    </span>
+                  </span>
+              </div>
+              <p id="trans">Transfer to same bank</p>
+              <p id="mon"><span>	&#8358</span> 0.00 </p>
+            </div>
+            <div id="transf4">
+              <div id="tran4">
+                <span class="material-symbols-outlined">
+                  <span class="material-symbols-outlined">
+                    credit_card
+                    </span>
+                  </span>
+              </div>
+              <p id="trans">Current debt</p>
+              <p id="mon"><span>	&#8358</span> 0.00 </p>
+            </div>
+            
+        </div>
+        <div id="big">
+          <div id="big2">
+              <div id="bbig">
+                <canvas id="transaction-history-graph" ></canvas>
+               
+          
+              
+              </div>
+             
+
+              <div id="bbig1">
+                <div id="send">
+                  <button onclick="fund()"  id="send1">Transfer</button>
+                  <button onclick="airtime()"  id="send2">Recharge</button>
+                  <button onclick="data()"  id="send3">Data</button>
+                  <button id="send4" onclick="flutter()">Paybills</button>
+                </div>
+                <div id="money">
+                  <div id="mon1">
+                    <input oninput="foundreceiver()" id="send22"  type="number" placeholder="Account Number">
+                  </div>
+                 <div id="mon1">
+                  <input id="send33" type="text" placeholder="Account Name">
+                 </div>
+                    <div id="mon1">
+                     
+                      <input id="send44" type="number" placeholder="Amount">
+                    </div>
+                    <button id="click" onclick="transfer1()">Send</button>
+                </div>
+                <div id="money1">
+                  <div id="mon1">
+                    <select  name="" id="inputre" class="custom-select">
+                      <option value="">Select a network provider</option>
+                      <option value="MTN">MTN</option>
+                      <option value="Airtel">Airtel</option>
+                      <option value="Glo">Glo</option>
+                      <option value="9mobile">9mobile</option>
+                  </select>
+                  </div>
+                 <div id="mon1">
+                  <input id="phonenum" type="number" placeholder="Phone Number">
+                 </div>
+                    <div id="mon1">
+                     
+                      <input id="airtimeamt" type="number" placeholder="Amount">
+                    </div>
+                    <button id="click" onclick="transfer2()">Buy</button>
+                    <!-- <button id="click" onclick="buyairtime()">Buy</button> -->
+                </div>
+
+                <div id="money3">
+                  <div id="mon1">
+                    <select name="" id="inputre" >
+                      <option value="">Select a network provider</option>
+                      <option value="MTN">MTN</option>
+                      <option value="Airtel">Airtel</option>
+                      <option value="Glo">Glo</option>
+                      <option value="9mobile">9mobile</option>
+                  </select>
+                  </div>
+                 <div id="mon1">
+                  <input type="number" placeholder="Phone Number">
+                 </div>
+                    <div id="mon1">
+                     
+                      <input type="number" placeholder="Subscription">
+                    </div>
+                    <button id="click" onclick="transfer5()">Recharge</button>
+                </div>
+
+
+              </div>
+             
+           
+          
+              
+          </div>
+          <div id="smallii">
+               <div id="smallb">
+                  <div id="box1">
+                     <div onclick="left()" id="arrows">
+                      <span class="material-symbols-outlined">
+                        chevron_left
+                        </span>
+                     </div>
+                      <div id="atm">
+                          <div id="kpatm">
+                            <img id="imgatm" src="./images/images/kp img.png" alt="">
+                            <p id="pay1">Pay</p>
+                          </div>
+                          <div id="icn">
+                              <img id="icp" src="./images/images/atm main.png" alt="">
+                              <img id="net" src="./images/images/remove.png" alt="">
+                          </div>
+                          <div id="icn1">
+                            <p>1234</p>
+                            <p>5678</p>
+                            <p>8765</p>
+                            <p>4321</p>
+                          </div>
+                          <div id="icn2">
+                            <p id="expire">02/24</p>
+                            <img id="master" src="./images/images/master.png" alt="">
+                            
+                          </div>
+                         <div id="icn3">
+                            <p id="name">Lexi Thompson</p>
+                         </div>
+                      </div>
+                      <div id="atm1">
+                        <div id="line">
+
+                        </div>
+                        <div id="line1">
+                          <p>Authorised Signature</p>
+                          <p>Not valid unless Signed</p>
+                        </div>
+                        <div id="line3">
+                          <div id="line4"></div>
+                          
+                        </div>
+                        <p></p>
+                      </div>
+                      <div onclick="right()" id="arrows1" >
+                        <span class="material-symbols-outlined">
+                          chevron_right
+                          </span>
+                      </div>
+                  </div>
+                  <div id="box2">
+                      <button id="add"><span class="material-symbols-outlined">
+                        add
+                        </span> Add card</button>
+                        <div id="total">
+                          <p >Current total</p>
+                          <div id="amm">
+                            <p>	&#8358</p>
+                            <p id="amount"></p>
+                          </div>
+                        </div>
+                        <div id="lastme">
+                        
+
+                        </div>
+                  </div>
+               </div> 
+          </div>
+        </div>
+      </div>
+    
+      
+        
+      </main>
+      <div id="piner" >
+        <div id="pins">
+          <div id="smallpin1">
+            <p>New Message</p>
+            <button onclick="cancel1()" id="canc">
+              <span  class="material-symbols-outlined">
+                close
+                </span>
+             </button> 
+          </div>
+          <div id="smallpin">
+              <img id="success" src="./images/images/success.png" alt="">
+              <P id="showsucess">Transfer successful</P>
+              <p id="hiiii"><span id="type"></span>&#8358;<span id="showamt2">hii</span> to <span id="thereceiver2"> <span id="yes"></span></span></p> 
+            <button id="receipt" onclick="download()">Download Receipt</button>
+          </div>
+        </div>
+        <div id="pins1">
+           <div id="receipt1">
+            <img id="rimg" src="./images/images/kp img.png" alt="" style="width: 120px; height: 80px;">
+              <p id="since">Since you know when</p>
+              <p id="since2">Transaction Receipt</p>
+           </div>
+           <div style="border-top: 1px solid rgb(76, 3, 29); border-bottom: 1px solid rgb(76, 3, 29);" id="receipt2">
+
+             
+           </div>
+           <p id="since2">Generated from keena-pay</p>
+           
+        </div>
+        <div id="pins2">
+          <button onclick="receiptd()" id="share">Save</button> <button onclick="closeall()" id="share">Close</button>
+        </div>
+       
+      </div> 
+     
+      
+      
+</body>
+</html>
+<script src="dash.js"></script>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="login.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+  <div id="animation-container">
+    <!-- Place your 7 pictures here -->
+    <img src="../public/images/images/vid1.jpg" alt="pic1">
+    <img src="../public/images/images/vid3.jpg" alt="pic2">
+    <img src="../public/images/images/vid2.jpg" alt="pic3">
+    <img src="../public/images/images/vid4.jpg" alt="pic4">
+    <img src="../public/images/images/vid1.jpg" alt="pic5">
+    <img src="../public/images/images/vid2.jpg" alt="pic6">
+    <img src="../public/images/images/vid4.jpg" alt="pic7">
+</div>
+    <div id="div1">
+        <p>Email address</p>
+        <input id="email" type="email">
+        <p>Password</p>
+        <div id="pasw">
+        <input id="password" type="password">
+        <button id="open" onclick="login()">LOG IN</button>
+        <span onclick="hide()" class="material-symbols-outlined" id="hideeye">
+            visibility_off
+          </span>
+          <span onclick="show()" class="material-symbols-outlined" id="showeye">
+            visibility
+          </span>
+    </div> 
+    <p id="forgot" onclick="forgot()">Forgot Password?</p>
+
+    </div>
+</body>
+</html>
+<script>
+  
+    const firebaseConfig = {
+    apiKey: "AIzaSyCBDcr1-UA5L3VqePCbSOCMoxp_Kv9jNxI",
+    authDomain: "keena-pay.firebaseapp.com",
+    projectId: "keena-pay",
+    storageBucket: "keena-pay.appspot.com",
+    messagingSenderId: "626250170104",
+    appId: "1:626250170104:web:dfb5248146be35d826c50d"
+  };
+
+ 
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+  </script>
+<script >
+    let email= document.getElementById('email')
+    let password= document.getElementById('password')
+
+    function show() {
+    password.type = "text";
+    showeye.style.display = "none";
+    hideeye.style.display = "block";
+    }
+
+    function hide() {
+    password.type = "password";
+    hideeye.style.display = "none";
+    showeye.style.display = "block";
+   
+  }
+
+
+
+
+    function login() {
+      
+        firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        alert("login successful")
+        window.location.href= "dash.html"
+       
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        alert('User not found')
+      });
+    }
+
+    function forgot() {
+      firebase.auth().sendPasswordResetEmail(email.value)
+  .then(() => {
+    alert('Password reset link sent to your email address')
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage);
+ 
+  });
+    }
+</script>

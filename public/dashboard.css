@@ -1,0 +1,492 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    width: 100%;
+    height: 100vh;
+ 
+}
+
+nav{
+    width: 100%;
+    height: 18vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    /* background-color: rgb(105, 40, 118); */
+}
+
+#horizontal{
+    width: 20%;
+    height: 300vh;
+    background-color: brown;
+    height: 120vh;
+}
+header{
+    width: 100%;
+    height: 5vh;
+    margin-top: 20vh;
+    position: fixed;
+    background-color: rgba(31, 5, 70, 0.406);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .carousel {
+    width: 100%;
+    height: 100vh; /* Adjust height as needed */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: brown;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: slideAnimation 5s infinite; /* Adjust timing as needed */
+  }
+  
+  @keyframes slideAnimation {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+#dash{
+    color: rgb(83, 83, 188);
+    margin-top: 20px;
+    
+}
+.ppp{
+    margin-top: 20px;
+}
+
+.ppp1{
+    margin-top: 15.5px;
+}
+
+
+#register{
+    display: flex;
+    width: 75%;
+    height: 18vh;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    font-size: 11px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(147,147,147);
+}
+#logo{
+    display: flex;
+    width: 25%;
+    height: 18vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#pay{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px;
+  
+}
+
+#h3{
+    font-size: 40px;
+    color: rgb(3, 3, 91);
+    margin-left: -30px;
+}
+
+#internet{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    border: none;
+    background-image: linear-gradient(to right, rgb(64, 64, 147)
+    , rgb(3, 3, 91))
+    
+}
+
+#internet, #register:hover{
+    cursor: pointer;
+}
+
+#lock{
+    font-size: 15px;
+  
+}
+
+#house{
+    
+    color: grey;font-size: 20px;
+}
+#logo{
+    width: 200px;
+    height: 100px;
+}
+
+#small1{
+    width: 100%;
+    height: 60vh;
+
+}
+
+#main{
+    width: 100%;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#first{
+    /* background-color: blue; */
+    display: flex;
+    width: 100%;
+    height: 300vh;
+}
+
+#setup{
+    width: 75%;
+    height: 18vh;
+    margin-top: 25vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(147,147,147);    
+    font-style: normal;
+}
+
+#setup1{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 300vh;
+    background-color: brown;
+
+}
+
+#profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+#prof{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+
+#bvn{
+    height: 50px;
+    gap: 1rem;
+    width: 10rem;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: blueviolet; */
+}
+#show{
+    margin-top: 5vh;
+    background-color: blue;
+    width: 100%;
+    height: 60vh;
+}
+#show2{
+    background-color: rgb(150, 37, 76);
+    width: 100%;
+    height: 100vh;
+    margin-top: 5vh;
+}
+
+#box{
+    width: 75%;
+    height: 170vh;
+
+    /* background-color: darkmagenta; */
+    margin-top: 5%;
+}
+
+#box1{
+    width: 100%;
+    height: 60vh;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+#box5{
+    margin-top: 5vh;
+    width: 100%;
+    height: 60vh;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+
+
+
+
+#box2{
+    width: 48%;
+    height: 60vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    /* display: flex;
+   flex-direction: column;
+   justify-content: space-between; */
+
+}
+
+
+
+#box3{
+    width: 48%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+#div12{
+    width: 100%;
+    height: 13vh;
+    background-color: white;
+
+}
+
+#div13{
+    width: 100%;
+    height: 46vh;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#box31{
+    width: 50%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    
+
+}
+
+#div131{
+    width: 100%;
+    height: 35vh;
+    background-color: rgb(64, 64, 147); 
+    border-radius: 0 0 5px 5px ;   
+
+}
+
+#div121{
+    margin-top: 10px;
+    width: 100%;
+    height: 6vh;
+    background-color: rgb(64, 64, 147);
+    margin-bottom: 1px;
+    border-radius: 5px 5px 0 0;
+
+}
+
+#pp{
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+#box11{
+    width: 100%;
+    height: 30vh;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: space-between;
+    display: flex;
+}
+
+#box22{
+    width: 48%;
+    height: 40vh;
+    background-color: white;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    display: flex;
+}
+
+#balance{
+    width: 86%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(175, 175, 216);   
+    justify-content: space-around;
+    margin-left: 30px;
+}
+
+#balance-amount{
+    width: 78%;
+    height: 30px;
+    gap: 1rem;
+    display: flex;
+}
+
+#fund{
+    width: 80%;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#piggy{
+    margin-top: 40px;
+    font-size: 70px;
+    font-weight: 600;
+    color: blue;
+}
+
+#piggy1{
+    margin-top: 10px;
+    font-size: 50px;
+    font-weight: 600;
+    color: blue;
+}
+
+#pp1{
+    font-size: 16px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    color: blue;
+    font-weight: 600;
+    text-align: center;
+    line-height: 30px;
+}
+
+#pp2{
+    font-size: 14px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    color: grey;
+    font-weight: 500;
+    text-align: center;
+    line-height: 18px;
+ 
+}
+
+#pp12{
+    font-size: 16px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    color: blue;
+    font-weight: 600;
+    text-align: center;
+    line-height: 30px;
+}
+
+#pp22{
+    font-size: 14px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    color: grey;
+    font-weight: 500;
+    text-align: center;
+    line-height: 18px;
+ 
+}
+
+#save{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    border: none;
+    margin-top: 30px;
+    background-image: linear-gradient(to right, rgb(64, 64, 147)
+     , rgb(3, 3, 91));
+}
+
+#save1{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    border: none;
+    margin-top: -10px;
+    background-image: linear-gradient(to right, rgb(64, 64, 147)
+     , rgb(3, 3, 91));
+}
+

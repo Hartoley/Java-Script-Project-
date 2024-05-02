@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgb(198, 198, 234), rgb(129, 129, 196), rgb(166, 159, 214));
+}
+
+nav{
+    width: 100%;
+    height: 18vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    /* background-color: rgb(105, 40, 118); */
+}
+#buy{
+    color: rgb(83, 83, 188);
+  
+    
+}
+
+
+#register{
+    display: flex;
+    width: 75%;
+    height: 18vh;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 11px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(147,147,147);
+}
+#logo{
+    display: flex;
+    width: 25%;
+    height: 18vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#pay{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px;
+  
+}
+
+#h3{
+    font-size: 40px;
+    color: rgb(3, 3, 91);
+    margin-left: -30px;
+}
+
+#internet{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
+    font-family: rob;font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    border: none;
+    background-image: linear-gradient(to right, rgb(64, 64, 147)
+     , rgb(3, 3, 91));
+}
+
+#lock{
+    font-size: 15px;
+  
+}
+
+#house{
+    color: grey;font-size: 20px;
+}
+#logo{
+    width: 200px;
+    height: 100px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    
+    />
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <main>
+        
+        
+     <div>
+       <header>
+          <p id="welcome">Welcome</p>
+        </header>
+      <div id="first">
+        <div id="horizontal">
+        
+        </div>
+      <div id="main">
+       
+       
+      </div>
+
+
+</div>
+<!-- <div id="show"></div>
+<div id="show2"></div> -->
+</div>
+    
+</main>
+
+
+     
+    
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+  
+    const firebaseConfig = {
+    apiKey: "AIzaSyCBDcr1-UA5L3VqePCbSOCMoxp_Kv9jNxI",
+    authDomain: "keena-pay.firebaseapp.com",
+    projectId: "keena-pay",
+    storageBucket: "keena-pay.appspot.com",
+    messagingSenderId: "626250170104",
+    appId: "1:626250170104:web:dfb5248146be35d826c50d"
+  };
+
+ 
+    const app = firebase.initializeApp(firebaseConfig);
+
+  </script>
+  
+<script>
+      let amount = document.getElementById('amount')
+      let welcome =document.getElementById('welcome')
+
+
+      function isloggedin() {
+        firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            console.log(user);
+            var uid = user.uid;
+            console.log(user.email);
+            const db = firebase.firestore();
+            var docRef = db.collection("Profile").doc(user.email);
+
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                
+                console.log("Document data:", doc.data());
+                amount.innerHTML=`${doc.data().balance}`
+                welcome.innerHTML= `Welcome to your dashboard ${doc.data().title} ${doc.data().firstname} ${doc.data().lastname}`
+                
+            } else {
+                // doc.data() will be undefined in this case
+                console.log(error);
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+                    // ...
+        } else {
+           
+            console.log("No user found");
+            window.location.href= "signup.html"
+        }
+        });
+
+
+
+
+
+  
+
+    }
+
+isloggedin()
+
+function myaccount(){
+
+}
+</script>
