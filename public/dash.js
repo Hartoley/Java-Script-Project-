@@ -528,17 +528,7 @@ function transactionHistory() {
                         
                         `;
 
-                        if (doc.data().type == "Fund by rave") {
-                          tbody1.innerHTML += `
-                          <td>Credit</td>
 
-                          <td>${doc.data().receiverName}</td>
-                          <td>${doc.data().transferAmount}</td>
-                          <td>${doc.data().transactionId}</td>
-                          <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
-                          
-                          `;
-                    }
             }
 
           
@@ -962,19 +952,20 @@ let rave_username =document.getElementById("raveuser")
 let rave_email =document.getElementById("raveemail")
 let rave_number =document.getElementById("ravephone")
 form.addEventListener("submit", makePayment)
+let menu = document.getElementById("horizontal")
 
 function makePayment(e) {
  
   e.preventDefault()
   const tx_ref = "Kee-pay_" + Math.floor((Math.random()*100000000)+1);
 
-  const success = FlutterwaveCheckout({
+  const modal = FlutterwaveCheckout({
     public_key: "FLWPUBK_TEST-45d26f9315fd37752c266b29ba8e67fe-X",
     tx_ref: tx_ref,
     amount: rave_amount.value,
     currency: "NGN",
     payment_options: "card, mobilemoneyghana, ussd",
-    redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
+    // redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
     meta: {
       consumer_id: 23,
       consumer_mac: "92a3-912ba-1192a",
@@ -988,97 +979,114 @@ function makePayment(e) {
       title: "Kee-Pay",
       description: "Kee pay fund",
       logo: "./images/images/kp img.png",
+    },
+    callback: function (data){
+      console.log("payment callback:", data);
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const email = user.email;
+  
+          db.collection("Profile")
+            .doc(email)
+            .get()
+            .then((doc) => {
+              if (doc.exists) {
+                const balance = doc.data().balance;
+                const newBalance = +balance + Number(rave_amount.value);
+                console.log(doc.data().pin);
+               
+                  db.collection("Profile")
+                    .doc(email)
+                    .update({
+                      balance: newBalance,
+                    })
+  
+                    .then(() => {
+                      db.collection("Profile")
+                        .doc(email)
+                        .onSnapshot((doc) => {
+                          amount.innerHTML = doc.data().balance;
+                        });
+                      console.log("Document successfully updated");
+                      console.log("Balance updated successfully!");
+                     
+                      db.collection("transaction")
+                        .add({
+                          type: "Fund by rave",
+                          receiverName: ` ${
+                            doc.data().firstname
+                          } ${doc.data().lastname}`,
+                          receiverEmail: email,
+                          amount: rave_amount.value,
+                          transferAmount: rave_amount.value,
+                          date: new Date(),
+                          senderEmail: rave_email.value,
+                          senderName: rave_username.value,
+                          transactionId: tx_ref,
+                          description: "Kee pay fund",
+  
+                        })
+                        .then(() => {
+                          const currentDate = new Date();
+                          const day = currentDate
+                            .getDate()
+                            .toString()
+                            .padStart(2, "0");
+                          const month = (currentDate.getMonth() + 1)
+                            .toString()
+                            .padStart(2, "0");
+                          const year = currentDate.getFullYear();
+                          const hour = currentDate
+                            .getHours()
+                            .toString()
+                            .padStart(2, "0");
+                          const minute = currentDate
+                            .getMinutes()
+                            .toString()
+                            .padStart(2, "0");
+                          const second = currentDate
+                            .getSeconds()
+                            .toString()
+                            .padStart(2, "0");
+                         
+  
+                        })
+                        .catch((error) => {
+                          console.error("Error adding transaction: ", error);
+                        });
+                    })
+                    .catch((error) => {
+                      console.error("Error updating balance: ", error);
+                    });
+                
+              } else {
+                console.log("No such document!");
+              }
+            })
+            .catch((error) => {
+              console.log("Error getting document: ", error);
+            });
+        } else {
+        }
+      
+    });
+      modal.close()
+    },
+    onclose: function() {
+      console.log("Payment cancelled!");
     }
   });
+
+  console.log(success);
   
-  if (success) {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        const email = user.email;
 
-        db.collection("Profile")
-          .doc(email)
-          .get()
-          .then((doc) => {
-            if (doc.exists) {
-              const balance = doc.data().balance;
-              const newBalance = +balance + Number(rave_amount.value);
-              console.log(doc.data().pin);
-             
-                db.collection("Profile")
-                  .doc(email)
-                  .update({
-                    balance: newBalance,
-                  })
+}
 
-                  .then(() => {
-                    db.collection("Profile")
-                      .doc(email)
-                      .onSnapshot((doc) => {
-                        amount.innerHTML = doc.data().balance;
-                      });
-                    console.log("Document successfully updated");
-                    console.log("Balance updated successfully!");
-                   
-                    db.collection("transaction")
-                      .add({
-                        type: "Fund by rave",
-                        receiverName: ` ${
-                          doc.data().firstname
-                        } ${doc.data().lastname}`,
-                        receiverEmail: email,
-                        amount: rave_amount.value,
-                        transferAmount: rave_amount.value,
-                        date: new Date(),
-                        senderEmail: rave_email.value,
-                        senderName: rave_username.value,
-                        transactionId: tx_ref,
-                        description: "Kee pay fund",
 
-                      })
-                      .then(() => {
-                        const currentDate = new Date();
-                        const day = currentDate
-                          .getDate()
-                          .toString()
-                          .padStart(2, "0");
-                        const month = (currentDate.getMonth() + 1)
-                          .toString()
-                          .padStart(2, "0");
-                        const year = currentDate.getFullYear();
-                        const hour = currentDate
-                          .getHours()
-                          .toString()
-                          .padStart(2, "0");
-                        const minute = currentDate
-                          .getMinutes()
-                          .toString()
-                          .padStart(2, "0");
-                        const second = currentDate
-                          .getSeconds()
-                          .toString()
-                          .padStart(2, "0");
-                       
 
-                      })
-                      .catch((error) => {
-                        console.error("Error adding transaction: ", error);
-                      });
-                  })
-                  .catch((error) => {
-                    console.error("Error updating balance: ", error);
-                  });
-              
-            } else {
-              console.log("No such document!");
-            }
-          })
-          .catch((error) => {
-            console.log("Error getting document: ", error);
-          });
-      } else {
-      }
-    
-  });
-  }
+function menubar(){
+  menu.style.display = "flex"
+  menu.style.width ="30%"
+  menu.style.zIndex = "5"
+
 }
