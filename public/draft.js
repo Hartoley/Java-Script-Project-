@@ -1,100 +1,168 @@
 
-function transactionHistory() {
+  gen1 = "";
+  gen2 = "";
+  gen3 = "";
+  gen4 = "";
+  
+  senditt2.innerHTML = `
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span class="visually-hidden" role="status">Loading...</span>
+  `;
+
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        var uid = user.uid;
-  
-        db.collection("transaction")
-          .orderBy("date", "desc") 
+        const email = user.email;
+
+        db.collection("Profile")
+          .doc(email)
           .get()
-          .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              const date = doc.data().date.toDate();
-              const year = date.getFullYear();
-              const month = (date.getMonth() + 1).toString().padStart(2, "0");
-              const day = date.getDate().toString().padStart(2, "0");
-              const hour = date.getHours().toString().padStart(2, "0");
-              const minute = date.getMinutes().toString().padStart(2, "0");
-              const second = date.getSeconds().toString().padStart(2, "0");
-              if (
-                doc.data().senderEmail == user.email &&
-                doc.data().type == "fund"
+          .then((doc) => {
+            if (doc.exists) {
+              const balance = doc.data().balance;
+              const newBalance = balance - airtimeamt.value;
+              console.log(doc.data().pin);
+              
+
+              if (airtimeamt.value > 1200) {
+                alert("Insufficient Balance");
+              } else if (
+                `${p1.value}${p2.value}${p3.value}${p4.value}` !==
+                doc.data().pin
               ) {
-                const date = doc.data().date.toDate();
-                const year = date.getFullYear();
-                const month = (date.getMonth() + 1).toString().padStart(2, "0");
-                const day = date.getDate().toString().padStart(2, "0");
-                const hour = date.getHours().toString().padStart(2, "0");
-                const minute = date.getMinutes().toString().padStart(2, "0");
-                const second = date.getSeconds().toString().padStart(2, "0");
+                alert("Incorrect PIN");
+                p1.value = "";
+                p2.value = "";
+                p3.value = "";
+                p4.value = "";
+
                
-                
-  
-                lasttransactions.innerHTML += `
-                          <div id="lasttrans">
-                          <img id="debitimg" src="images/images/debit.png" alt="">
-                              <h4 id="lastp"> ${doc.data().receiverName}<h4/>
-                              <p id="lastpp">- N ${doc.data().transferAmount}<p/>
-                          </div>
-                          `;
-  
-                tbody1.innerHTML += `  
-                          <tr id="tab" >
-                          <td>Debit</td>
-                          <td>${doc.data().receiverName}</td>
-                          <td>${doc.data().transferAmount}</td>
-                          <td>${doc.data().transactionId}</td> 
-                          <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
-                          
-                      </tr>
-                          
-                          `;
-    
-  
-                // receiversName.innerHTML = doc.data().receiverName
+              } else {
+                const newBalance = balance - airtimeamt.value;
+                db.collection("Profile")
+                  .doc(email)
+                  .update({
+                    balance: newBalance,
+                  })
+
+                  .then(() => {
+                    db.collection("Profile")
+                      .doc(email)
+                      .onSnapshot((doc) => {
+                        amount.innerHTML = doc.data().balance;
+                      });
+                    console.log("Document successfully updated");
+                    console.log("Balance updated successfully!");
+                    for (let inde = 0; inde < 10; inde++) {
+                      randomnumber = Math.floor(Math.random() * 10);
+                      console.log(randomnumber);
+                      gen += randomnumber;
+                    }
+                    for (let inde1 = 0; inde1 < 4; inde1++) {
+                      randomnumber = Math.floor(Math.random() * 10);
+                      console.log(randomnumber1);
+                      gen1 += randomnumber1;
+                    }
+                    for (let inde2 = 0; inde2 < 4; inde2++) {
+                      randomnumber = Math.floor(Math.random() * 10);
+                      console.log(randomnumber2);
+                      gen2 += randomnumber2;
+                    }
+                    for (let inde3 = 0; inde3 < 4; inde3++) {
+                      randomnumber = Math.floor(Math.random() * 10);
+                      console.log(randomnumber2);
+                      gen3 += randomnumber3;
+                    }
+                    for (let inde3 = 0; inde4 < 4; inde4++) {
+                      randomnumber = Math.floor(Math.random() * 10);
+                      console.log(randomnumber4);
+                      gen4 += randomnumber4;
+                    }
+
+                    db.collection("transaction")
+                      .add({
+                        receiverEmail: "",
+                        senderEmail: "",
+                        type: "Debit card",
+                        amount: "1200",
+                        date: new Date(),
+                        senderEmail: email,
+                        senderName: `${doc.data().username}`,
+                        senderOldBalance: balance,
+                        senderNewBalance: newBalance,
+                        transactionId: gen,
+                        receipientNum: "Debit card purchase",
+                        description: description.value,
+                        
+                      })
+                      .then(() => {
+                        thereceiver2.innerHTML = phonenum.value;
+                        showamt2.innerHTML = airtimeamt.value;
+                        key1.innerHTML = gen1
+                        key2.innerHTML = gen2
+                        key3.innerHTML = gen3
+                        key4.innerHTML = gen4
+                        type.innerHTML = "Purchase of debit card";
+                        yes.innerHTML = "successful";
+                        p1.value = "";
+                        p2.value = "";
+                        p3.value = "";
+                        p4.value = "";
+                        pined.style.display = "none";
+                        pins.style.display = "flex";
+                        piner.style.display = "Flex";
+                        const currentDate = new Date();
+                        const day = currentDate
+                          .getDate()
+                          .toString()
+                          .padStart(2, "0");
+                        const month = (currentDate.getMonth() + 1)
+                          .toString()
+                          .padStart(2, "0");
+                        const year = currentDate.getFullYear();
+                        const hour = currentDate
+                          .getHours()
+                          .toString()
+                          .padStart(2, "0");
+                        const minute = currentDate
+                          .getMinutes()
+                          .toString()
+                          .padStart(2, "0");
+                        const second = currentDate
+                          .getSeconds()
+                          .toString()
+                          .padStart(2, "0");
+                        receipt2.innerHTML = `
+                        <p class="treceipt" id="Dated">Transaction Date: <span>${day} ${month}, ${year}, ${hour}hr ${minute}min ${second}scs</span></p>
+                        <p class="treceipt" id="Type">Transaction Type: <span>Card Purchase</span></p>
+                        <p class="treceipt" id="Amount">Amount: <span>&#8358 1 200</span></p>
+                        <p class="treceipt" id="Senderacc">Card: <span>Debit</span></p>
+                        <p class="treceipt" id="Type">Transaction Id: <span>${gen}</span></p>
+
+                        
+                        `;
+                        // inputre.value =""
+                        console.log("Transaction added successfully!");
+                        name.innerHTML = `${doc.data().first} ${doc.data().last}`
+                        airtimeamt.value = "";
+                        phonenum.value = "";
+                      })
+                      .catch((error) => {
+                        console.error("Error adding transaction: ", error);
+                      });
+                  })
+                  .catch((error) => {
+                    console.error("Error updating balance: ", error);
+                  });
               }
-  
-              if (doc.data().receiverEmail === user.email) {
-                if (doc.data().type === "Fund by rave") {
-                  lasttransactions.innerHTML += `
-                    <div id="lasttrans">
-                      <img id="creditimg" src="images/images/credit2.png" alt="">
-                      <h4 id="lastp"> ${doc.data().senderName}<h4/>
-                      <p id="lastpp">+ N ${doc.data().transferAmount}<p/>
-                    </div>
-                  `;
-                } else if (doc.data().type === "fund") {
-                  lasttransactions.innerHTML += `
-                    <div id="lasttrans">
-                      <img id="debitimg" src="images/images/debit.png" alt="">
-                      <h4 id="lastp"> ${doc.data().receiverName}<h4/>
-                      <p id="lastpp">- N ${doc.data().transferAmount}<p/>
-                    </div>
-                  `;
-                } else if (doc.data().type === "airtime") {
-                  lasttransactions.innerHTML += `
-                    <div id="lasttrans">
-                      <img id="debitimg" src="images/images/credit2.png" alt="">
-                      <h4 id="lastp"> ${doc.data().receipientNum}<h4/>
-                      <p id="lastpp">- N ${doc.data().amount}<p/>
-                    </div>
-                  `;
-                }
-  
-                tbody1.innerHTML += `  
-                  <tr id="tab">
-                    <td>${doc.data().type === "Fund by rave" ? "Credit" : "Debit"}</td>
-                    <td>${doc.data().receiverName}</td>
-                    <td>${doc.data().transferAmount}</td>
-                    <td>${doc.data().transactionId}</td>
-                    <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
-                  </tr>
-                `;
-              }
-            });
+            } else {
+              console.log("No such document!");
+            }
+          })
+          .catch((error) => {
+            console.log("Error getting document: ", error);
           });
       } else {
-       
       }
-    });
-  }
+    
+  });

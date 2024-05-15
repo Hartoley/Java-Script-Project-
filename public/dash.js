@@ -13,10 +13,15 @@ let pins2 = document.getElementById("pins2");
 let description = document.getElementById("descript");
 let inptre = document.getElementById("inputre");
 let pincontainer = document.getElementById("pincontainer")
+let none = document.getElementById('none')
 let p1 = document.getElementById("p1");
 let p2 = document.getElementById("p2");
 let p3 = document.getElementById("p3");
 let p4 = document.getElementById("p4");
+let p16 = document.getElementById("p16");
+let p26 = document.getElementById("p26");
+let p36 = document.getElementById("p36");
+let p46 = document.getElementById("p46");
 let p11 = document.getElementById("p11");
 let p21 = document.getElementById("p21");
 let p31 = document.getElementById("p31");
@@ -25,6 +30,7 @@ let atm = document.getElementById("atm");
 let atm1 = document.getElementById("atm1");
 let phonenum = document.getElementById("phonenum");
 let senditt2 = document.getElementById("senditt2");
+let senditt6 = document.getElementById("senditt6");
 let receiversName = document.getElementById("receiversName");
 let userinpname = document.getElementById("userinpname");
 let userinpemail = document.getElementById("userinpemail");
@@ -66,7 +72,9 @@ let dashsettings = document.getElementById("dashsetting");
 let yes = document.getElementById("yes");
 let senditt = document.getElementById("senditt");
 let pined = document.getElementById("pined");
+let showamts = document.getElementById("showamts");
 let showamt1 = document.getElementById("showamt1");
+let thereceivers = document.getElementById("thereceivers");
 let thereceiver1 = document.getElementById("thereceiver1");
 let showamt2 = document.getElementById("showamt2");
 let thereceiver2 = document.getElementById("thereceiver2");
@@ -80,14 +88,16 @@ let money3 = document.getElementById("money3");
 let receipt = document.getElementById("receipt");
 let verified = document.getElementById("send44");
 let receipt2 = document.getElementById("receipt2");
+let key1 = document.getElementById("key1")
 const userslist = [];
 let foundUser = null;
 let lasttransactionsHTML = "";
 let tbody1HTML = "";
 const storageRef = firebase.storage().ref();
-
+let namere = document.getElementById("name")
 let outcome = "";
 let profp = document.getElementById("profp");
+
 
 function profileimage(ev) {
   console.log(ev.target.files);
@@ -129,20 +139,56 @@ function profile1() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const email = user.email;
+      const updateData = {};
 
-      db.collection("Profile")
-        .doc(email)
-        .update({})
-        .then(() => {})
-        .catch((error) => {
-          console.error("Error updating profile: ", error);
-        });
+      if (userinpbvn.value && userinpbvn.value.length === 11) {
+        updateData.bvn = userinpbvn.value;
+      }
+      
+      if (userinpname.value) {
+        updateData.username = userinpname.value;
+      }
+      if (userinpaddress.value) {
+        updateData.useraddress = userinpaddress.value;
+      }
+      if (userinpnumber.value ) {
+        updateData.phonenumber = userinpnumber.value;
+      }
+      if (userinpemail.value ) {
+        updateData.email = userinpemail.value;
+      }
+      if (userinppassword.value && userinppassword.value.length === 4) {
+        updateData.pin = userinppassword.value;
+      }
+
+      if (userinpprofession.value ) {
+        updateData.occupation = userinpprofession.value;
+      }
+  
+      if (Object.keys(updateData).length > 0) {
+        db.collection("Profile")
+          .doc(email)
+          .update(updateData)
+          .then(() => {
+            alert("Profile updated successfully");
+            console.log("Success");
+          })
+          .catch((error) => {
+            console.error("Error updating profile: ", error);
+          });
+      } else {
+        console.log("No data to update");
+      }
     } else {
+      console.log("User not signed in");
     }
   });
 }
 
-function pinn() {
+
+
+
+function pinn(currentInput, prevInput) {
   if (p1.value.length == 1) {
     p2.focus();
   }
@@ -154,9 +200,44 @@ function pinn() {
   }
   if (p4.value.length == 1) {
   }
+  
+  if (currentInput.value.length === 0) {
+
+    prevInput.focus();
+  
+    prevInput.value = "";
+  }
 }
 
-function pinn1() {
+
+p1.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p1, null);
+  }
+});
+
+p2.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p2, p1);
+  }
+});
+
+p3.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p3, p2);
+  }
+});
+
+p4.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p4, p3);
+  }
+});
+
+
+
+
+function pinn1(currentInput, prevInput) {
   if (p11.value.length == 1) {
     p21.focus();
   }
@@ -168,7 +249,83 @@ function pinn1() {
   }
   if (p41.value.length == 1) {
   }
+  if (currentInput.value.length === 0) {
+    prevInput.focus();
+    prevInput.value = "";
+  }
 }
+
+p11.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p11, null);
+  }
+});
+
+p21.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p21, p11);
+  }
+});
+
+p31.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p31, p21);
+  }
+});
+
+p41.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p41, p31);
+  }
+});
+
+
+
+
+
+function pinn6(currentInput, prevInput) {
+    if (p16.value.length == 1) {
+      p26.focus();
+    }
+    if (p26.value.length == 1) {
+      p36.focus();
+    }
+    if (p36.value.length == 1) {
+      p46.focus();
+    }
+    if (p46.value.length == 1) {
+    }
+  if (currentInput.value.length === 0) {
+    prevInput.focus();
+    prevInput.value = "";
+  }
+}
+
+
+p16.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn6(p16, null);
+  }
+});
+
+p26.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn6(p26, p16);
+  }
+});
+
+p36.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p36, p26);
+  }
+});
+
+p46.addEventListener('keydown', function(event) {
+  if (event.key === "Backspace") {
+    pinn1(p46, p36);
+  }
+});
+
 
 function isloggedin() {
   firebase.auth().onAuthStateChanged((user) => {
@@ -183,17 +340,18 @@ function isloggedin() {
         .get()
         .then((doc) => {
           if (doc.exists) {
-    
+
             profileimg.src = doc.data().profileimage;
             profp.src = doc.data().profileimage;
             amount.innerHTML = `${doc.data().balance}`;
-            welcome.innerHTML = `${doc.data().title} ${doc.data().firstname} ${
-              doc.data().lastname
-            }`;
-
-            move.innerHTML = `Welcome to your dashboard ${doc.data().title} ${
-              doc.data().firstname
-            } ${doc.data().lastname}, Happy banking!!!`;
+            welcome.innerHTML = doc.data().username;
+            key1.innerHTML = "****"
+            key2.innerHTML = doc.data().key2
+            key3.innerHTML = doc.data().key3
+            key4.innerHTML = "****"
+            move.innerHTML = `Welcome to your dashboard ${doc.data().username}, Happy banking!!!`;    
+          }  if (doc.data().purchasedCard == true) {
+            namere.innerHTML = `${doc.data().firstname} ${doc.data().lastname}`;
           } else {
             console.log(error);
             console.log("No such document!");
@@ -280,14 +438,6 @@ function transfer1() {
   }
 }
 
-// document.addEventListener('click', function(event) {
-//   var pins1 = document.getElementById('pins1');
-
-//   if (!pins1.contains(event.target)) {
-
-//       pins1.style.display = 'none';
-//   }
-// });
 
 
 function transfer() {
@@ -363,6 +513,31 @@ function transfer() {
                         type: "fund",
                       })
                       .then(() => {
+                        
+                          db.collection("transaction")
+                            .doc(currentUser.email)
+                            .onSnapshot((doc) => {
+                              lasttransactions.innerHTML += `
+                              <div id="lasttrans">
+                              <img id="debitimg" src="images/images/debit.png" alt="">
+                                  <h4 id="lastp"> ${doc.data().receiverName}<h4/>
+                                  <p id="lastpp">- N ${doc.data().transferAmount}<p/>
+                              </div>
+                              `;
+      
+                        tbody1.innerHTML += `  
+                                  <tr id="tab" >
+                                  <td>Debit</td>
+                                  <td>${doc.data().receiverName}</td>
+                                  <td>${doc.data().transferAmount}</td>
+                                  <td>${doc.data().transactionId}</td> 
+                                  <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
+                                  
+                              </tr>
+                              
+                              `;
+                            });
+                       
                         const currentDate = new Date();
                         const day = currentDate
                           .getDate()
@@ -446,6 +621,43 @@ function transfer() {
   });
 }
 
+let totalTransferAmount = 0; 
+let monsame = document.getElementById("monsame")
+
+
+function transfertosamebank(){
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var uid = user.uid;
+      
+    db.collection("transaction")
+      .orderBy("date", "desc") 
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          if (doc.data().senderEmail == user.email && doc.data().type == "fund") {
+           
+            totalTransferAmount += parseFloat(doc.data().transferAmount);
+            monsame.innerHTML = `${totalTransferAmount}.00`
+          }
+        });
+
+       
+        console.log("Total Transfer Amount:", totalTransferAmount);
+      })
+      .catch((error) => {
+        console.error("Error getting transactions:", error);
+      });
+
+    
+    }
+
+  })
+    
+}
+
+transfertosamebank()
+
 function transactionHistory() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -508,7 +720,7 @@ function transactionHistory() {
               lasttransactions.innerHTML += `
                         <div id="lasttrans">
                         <img id="debitimg" src="images/images/credit2.png" alt="">
-                        <h4 id="lastp"> ${doc.data().receiverName}<h4/>
+                        <h4 id="lastp"> ${doc.data().senderName}<h4/>
                         <p id="lastpp">+ N ${doc.data().transferAmount}<p/>
                         </div>
                         `;
@@ -517,7 +729,7 @@ function transactionHistory() {
                         <tr id="tab" >
                         <td>Credit</td>
 
-                        <td>${doc.data().receiverName}</td>
+                        <td>${doc.data().senderName}</td>
                        
                         <td>${doc.data().transferAmount}</td>
                         <td>${doc.data().transactionId}</td>
@@ -533,7 +745,7 @@ function transactionHistory() {
 
           
 
-            if (doc.data().type == "airtime") {
+            if (doc.data().type == "airtime" && doc.data().senderEmail == user.email) {
               const date = doc.data().date.toDate();
               const year = date.getFullYear();
               const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -549,11 +761,42 @@ function transactionHistory() {
               <p id="lastpp">- N ${doc.data().amount}<p/>
               </div>
               `;
-
+              
               tbody1.innerHTML += `  
                       <tr id="tab" >
                       <td>Debit</td>
                       <td>${doc.data().receipientNum}</td>
+                      <td>${doc.data().amount}</td>
+                      <td>${doc.data().transactionId}</td>
+                      <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
+              
+                      
+                  </tr>
+                      
+                      `;
+            }
+
+            if (doc.data().type == "Debit card" && doc.data().senderEmail == user.email) {
+              const date = doc.data().date.toDate();
+              const year = date.getFullYear();
+              const month = (date.getMonth() + 1).toString().padStart(2, "0");
+              const day = date.getDate().toString().padStart(2, "0");
+              const hour = date.getHours().toString().padStart(2, "0");
+              const minute = date.getMinutes().toString().padStart(2, "0");
+              const second = date.getSeconds().toString().padStart(2, "0");
+
+              lasttransactions.innerHTML += `
+              <div id="lasttrans">
+              <img id="debitimg" src="images/images/credit2.png" alt="">
+              <h4 id="lastp"> ${doc.data().type}<h4/>
+              <p id="lastpp">- N ${doc.data().amount}<p/>
+              </div>
+              `;
+
+              tbody1.innerHTML += `  
+                      <tr id="tab" >
+                      <td>Debit</td>
+                      <td>${doc.data().type}</td>
                       <td>${doc.data().amount}</td>
                       <td>${doc.data().transactionId}</td>
                       <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
@@ -573,9 +816,6 @@ function transactionHistory() {
 
 
 
-
-
-
 function download() {
   pins.style.display = "none";
   pins1.style.display = "flex";
@@ -588,12 +828,15 @@ function download2() {
   pins2.style.display = "flex";
 }
 
-function closeall() {
+function closedall() {
   pins.style.display = "none";
   pins1.style.display = "none";
   pins2.style.display = "none";
   piner.style.display = "none";
+  pincontainer.style.display = "none"
 }
+
+
 
 
 transactionHistory();
@@ -603,6 +846,8 @@ function distransactions() {
   transfersh.style.display = "none";
   dishistory.style.display = "block";
   dashsettings.style.display = "none";
+  form.style.display = "none";
+  history1.style.display = "none";
 }
 
 function payment() {
@@ -610,7 +855,10 @@ function payment() {
   transfersh.style.display = "none";
   dishistory.style.display = "none";
   history1.style.display = "block";
+  // hello.style.display = "none";
   dashsettings.style.display = "none";
+  form.style.display = "block";
+  // menu.style.display = "none";
 }
 
 function dashsetting() {
@@ -618,6 +866,10 @@ function dashsetting() {
   transfersh.style.display = "none";
   dishistory.style.display = "none";
   dashsettings.style.display = "flex";
+  form.style.display = "none";
+  history1.style.display = "none";
+  
+  
 }
 
 function home() {
@@ -627,6 +879,7 @@ function home() {
   form.style.display = "none";
   history1.style.display = "none";
   dashsettings.style.display = "none";
+  // menu.style.display = "none";
   
 }
 
@@ -749,18 +1002,27 @@ function cancel() {
   p2.value = "";
   p3.value = "";
   p4.value = "";
+  p16.value = "";
+  p26.value = "";
+  p36.value = "";
+  p46.value = "";
   p11.value = "";
   p21.value = "";
   p31.value = "";
   p41.value = "";
+  pincontainer.style.display = "none"
   pin.style.display = "none";
   pined.style.display = "none";
+  pindebit.style.display = "none";
 }
 
 function cancel1() {
   pins.style.display = "none";
   pins1.style.display = "none";
   piner.style.display = "none";
+  pincontainer.style.display = "none"
+  // menu.style.display = "none";
+  // pindebit.style.display = "none";
 }
 
 gen = "";
@@ -827,7 +1089,6 @@ function buyairtime() {
                     db.collection("transaction")
                       .add({
                         receiverEmail: "",
-                        senderEmail: "",
                         type: "airtime",
                         amount: airtimeamt.value,
                         date: new Date(),
@@ -843,6 +1104,31 @@ function buyairtime() {
                         network: inputre.value,
                       })
                       .then(() => {
+                        db.collection("transaction")
+                        .doc(email)
+                        .onSnapshot((doc) => {
+                       
+                        lasttransactions.innerHTML += `
+                        <div id="lasttrans">
+                        <img id="debitimg" src="images/images/credit2.png" alt="">
+                        <h4 id="lastp"> ${doc.data().receipientNum}<h4/>
+                        <p id="lastpp">- N ${doc.data().amount}<p/>
+                        </div>
+                        `;
+                        
+                        tbody1.innerHTML += `  
+                                <tr id="tab" >
+                                <td>Debit</td>
+                                <td>${doc.data().receipientNum}</td>
+                                <td>${doc.data().amount}</td>
+                                <td>${doc.data().transactionId}</td>
+                                <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
+                        
+                                
+                            </tr>
+                                
+                                `;
+                        });
                         thereceiver2.innerHTML = phonenum.value;
                         showamt2.innerHTML = airtimeamt.value;
                         type.innerHTML = "Airtime purchase of ";
@@ -933,6 +1219,7 @@ function receiptd() {
   window.print();
 
   document.body.innerHTML = originalContents;
+  
 }
 
 
@@ -953,6 +1240,7 @@ let rave_email =document.getElementById("raveemail")
 let rave_number =document.getElementById("ravephone")
 form.addEventListener("submit", makePayment)
 let menu = document.getElementById("horizontal")
+let showsucess= document.getElementById("showsucess")
 
 function makePayment(e) {
  
@@ -1027,6 +1315,31 @@ function makePayment(e) {
   
                         })
                         .then(() => {
+                          db.collection("transaction")
+                        .doc(email)
+                        .onSnapshot((doc) => {
+                          
+                        lasttransactions.innerHTML += `
+                        <div id="lasttrans">
+                        <img id="debitimg" src="images/images/credit2.png" alt="">
+                        <h4 id="lastp"> ${doc.data().type}<h4/>
+                        <p id="lastpp">- N ${doc.data().amount}<p/>
+                        </div>
+                        `;
+
+                        tbody1.innerHTML += `  
+                                <tr id="tab" >
+                                <td>Debit</td>
+                                <td>${doc.data().type}</td>
+                                <td>${doc.data().amount}</td>
+                                <td>${doc.data().transactionId}</td>
+                                <td>${day} ${month}, ${year}, ${hour}hr ${minute}min  ${second}scs</td>
+                        
+                                
+                            </tr>
+                                
+                                `;
+                        });
                           const currentDate = new Date();
                           const day = currentDate
                             .getDate()
@@ -1088,5 +1401,208 @@ function menubar(){
   menu.style.display = "flex"
   menu.style.width ="30%"
   menu.style.zIndex = "5"
+
+}
+
+function buycard (){
+    let card = document.getElementById("ares")
+    let tos = document.getElementById("tos")
+    pincontainer.style.display = "flex";
+    pindebit.style.display = "flex";
+
+    card.innerHTML= "You wil be debited"
+    showamts.innerHTML = "1200"
+    tos.innerHTML = "for"
+    thereceivers.innerHTML= "Debit cards purchase"
+
+
+}
+
+function debitcard() {
+  
+  gen1 = "";
+  gen2 = "";
+  gen3 = "";
+  gen4 = "";
+  
+  senditt6.innerHTML = `
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span class="visually-hidden" role="status">Loading...</span>
+  `;
+
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const email = user.email;
+        for (let inde = 0; inde < 10; inde++) {
+          randomnumber = Math.floor(Math.random() * 10);
+          console.log(randomnumber);
+          gen += randomnumber;
+        }
+        for (let inde1 = 0; inde1 < 4; inde1++) {
+          randomnumber1 = Math.floor(Math.random() * 10);
+          console.log(randomnumber1);
+          gen1 += randomnumber1;
+        }
+        for (let inde2 = 0; inde2 < 4; inde2++) {
+          randomnumber2 = Math.floor(Math.random() * 10);
+          console.log(randomnumber2);
+          gen2 += randomnumber2;
+        }
+        for (let inde3 = 0; inde3 < 4; inde3++) {
+          randomnumber3 = Math.floor(Math.random() * 10);
+          console.log(randomnumber2);
+          gen3 += randomnumber3;
+        }
+        for (let inde4 = 0; inde4 < 4; inde4++) {
+          randomnumber4 = Math.floor(Math.random() * 10);
+          console.log(randomnumber4);
+          gen4 += randomnumber4;
+        }
+
+        db.collection("Profile")
+          .doc(email)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              const balance = doc.data().balance;
+              console.log(doc.data().pin);
+              
+
+              if (airtimeamt.value > 1200) {
+                alert("Insufficient Balance");
+              } else if (
+                `${p16.value}${p26.value}${p36.value}${p46.value}` !==
+                doc.data().pin
+              ) {
+                alert("Incorrect PIN");
+                p16.value = "";
+                p26.value = "";
+                p36.value = "";
+                p46.value = "";
+
+               
+              } else {
+                const newBalance = balance - "1200";
+                db.collection("Profile")
+                  .doc(email)
+                  .update({
+                    balance: newBalance,
+                    key1: gen1,
+                    key2: gen2,
+                    key3: gen3, 
+                    key4:gen4,
+                    purchasedCard:true,
+                  })
+
+                  .then(() => {
+                    db.collection("Profile")
+                      .doc(email)
+                      .onSnapshot((doc) => {
+                        namere.innerHTML = `${doc.data().firstname} ${doc.data().lastname}`;
+                        amount.innerHTML = doc.data().balance;
+                        key1.innerHTML = "****"
+                        key2.innerHTML = doc.data().key2
+                        key3.innerHTML = doc.data().key3
+                        key4.innerHTML = "****"
+                      });
+                    console.log("Document successfully updated");
+                    console.log("Balance updated successfully!");
+                   
+
+                    db.collection("transaction")
+                      .add({
+                        receiverEmail: "",
+                        senderEmail: doc.data().email,
+                        type: "Debit card",
+                        amount: "1200",
+                        date: new Date(),
+                        senderEmail: email,
+                        senderName: `${doc.data().username}`,
+                        senderOldBalance: balance,
+                        senderNewBalance: newBalance,
+                        transactionId: gen,
+                        receipientNum: "Debit card purchase",
+                        description: description.value,
+                        key1: gen1,
+                        key2: gen2,
+                        key3: gen3, 
+                        key4:gen4,
+                        
+                      })
+                      .then(() => {
+                        
+                        thereceivers.innerHTML = "Debit card"
+                        showamt.innerHTML = "1200";
+                        
+                        type.innerHTML = "Purchase of debit card";
+                        yes.innerHTML = "successful";
+                        showsucess.innerHTML = "Purchase successful"
+                        p16.value = "";
+                        p26.value = "";
+                        p36.value = "";
+                        p46.value = "";
+                        pindebit.style.display = "none";
+                        pins.style.display = "flex";
+                        piner.style.display = "Flex";
+                        const currentDate = new Date();
+                        const day = currentDate
+                          .getDate()
+                          .toString()
+                          .padStart(2, "0");
+                        const month = (currentDate.getMonth() + 1)
+                          .toString()
+                          .padStart(2, "0");
+                        const year = currentDate.getFullYear();
+                        const hour = currentDate
+                          .getHours()
+                          .toString()
+                          .padStart(2, "0");
+                        const minute = currentDate
+                          .getMinutes()
+                          .toString()
+                          .padStart(2, "0");
+                        const second = currentDate
+                          .getSeconds()
+                          .toString()
+                          .padStart(2, "0");
+                       
+                        receipt2.innerHTML = `
+                        <p class="treceipt" id="Dated">Transaction Date: <span>${day} ${month}, ${year}, ${hour}hr ${minute}min ${second}scs</span></p>
+                        <p class="treceipt" id="Type">Transaction Type: <span>Card Purchase</span></p>
+                        <p class="treceipt" id="Amount">Amount: <span>&#8358 1200</span></p>
+                        <p class="treceipt" id="Senderacc">Card: <span>Debit</span></p>
+                        <p class="treceipt" id="Type">Transaction Id: <span>${gen}</span></p>
+
+                        
+                        `;
+                      
+                       
+                        console.log("Transaction added successfully!");
+                        
+                        
+                        
+                        none.style.display= "none"
+                        
+                      })
+                      .catch((error) => {
+                        console.error("Error adding transaction: ", error);
+                      });
+                  })
+                  .catch((error) => {
+                    console.error("Error updating balance: ", error);
+                  });
+              }
+            } else {
+              console.log("No such document!");
+            }
+          })
+          .catch((error) => {
+            console.log("Error getting document: ", error);
+          });
+      } else {
+      }
+    
+  });
 
 }

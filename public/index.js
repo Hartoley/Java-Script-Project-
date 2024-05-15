@@ -1,7 +1,6 @@
 let slideIndex = 1;
 showSlides(slideIndex);
 
-
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
@@ -27,9 +26,18 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-function open() {
+function openit() {
   window.location.href = "signup.html"
 }
+
+function started() {
+  window.location.href = "signup.html"
+}
+
+function startedit() {
+  window.location.href = "signup.html"
+}
+
 
 function login() {
   window.location.href = "login.html"

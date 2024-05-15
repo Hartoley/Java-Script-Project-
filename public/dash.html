@@ -191,8 +191,8 @@
             <p id="are"> You are about to transfer</p>
                <div id="aboutto">
     
-                <p>&#8358;  <span id="showamt">hii</span></p> 
-                <p>To</p>
+                <p>&#8358;  <span id="showamt2">hii</span></p> 
+                <p id="to">To</p>
                 <p id="thereceiver">the</p>
                </div>
                <div id="icons">
@@ -224,6 +224,47 @@
                <div id="close">
                 <button onclick="cancel()" id="senditt1">Cancle</button>
                 <button onclick="transfer()" id="senditt">Send</button>
+               </div>
+               
+              </div>
+          </div>
+          <div id="pindebit">
+            <p id="ares"> You are about to transfer</p>
+               <div id="abouttos">
+    
+                <p> &#8358;  <span id="showamts">hii</span></p> 
+                <p id="tos">To</p>
+                <p id="thereceivers">the</p>
+               </div>
+               <div id="icons">
+                  <div id="hicon">
+                    <span class="material-symbols-outlined">
+                      account_balance
+                      </span>
+                  </div>
+                  <div id="straight"></div>
+                  <div id="hicon">
+                    <span class="material-symbols-outlined">
+                      bolt
+                      </span>
+                  </div>
+               </div>
+               <input id="descript" type="text" placeholder="Description">
+               <div id="pin1">
+               
+                <h6 style="color: white;">Your transaction pin</h6>
+                <div id="pin11">
+                  <input oninput="pinn6()" class="pinn" id="p16" type="number" maxlength="1"/>
+                  <input oninput="pinn6()" class="pinn" id="p26" type="number" maxlength="1"/>
+                  <input oninput="pinn6()" class="pinn" id="p36" type="number" maxlength="1"/>
+                  <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  type = "number"
+                  oninput="pinn6()" class="pinn" id="p46" type="number" maxlength="1" />
+                </div>
+               
+               <div id="close">
+                <button onclick="cancel()" id="senditt1">Cancle</button>
+                <button onclick="debitcard()" id="senditt6">Send</button>
                </div>
                
               </div>
@@ -293,13 +334,13 @@
               <img id="profileimg" src="images/images/picsprofile.png" alt="">
               
             </div>
-              <button id="imgb">
+              <div id="imgb">
                 <label for="fileInput"> Change your profile image</label>
                 <input onchange="profileimage(event)" id="fileInput" type="file" >
                 
-              </button>
+              </div>
             <p id="username">Change your password</p>
-              <input class="userinp" id="userinppassword" placeholder="Change your password" type="text">
+              <input class="userinp" id="userinppassword" placeholder="Change your transaction pin" type="number">
               <p id="username">Profession</p>
               <input class="userinp" id="userinpprofession" placeholder="Profession" type="text">
               
@@ -310,9 +351,9 @@
             
         </div>
         <div id="history1">
-          <h1 style="margin-top: 10%;"></h1>
+          <h1 id="hello" style="margin-top: 10%;"></h1>
           <form class="mx-auto shadow w-50 px-5 py-3 mt-3" id="form">
-            <h1 class="text-muted text-center">Sign Up</h1>
+            <h1 class="text-muted text-center">Payment Gateway</h1>
             <input name="username" class="form-control mt-3" required id="raveuser" type="text" placeholder="Description">
             <input name="email" class="form-control mt-3" required id="raveemail"  type="text" placeholder="Email">
             <input  class="form-control mt-3" required id="ravephone"  type="text" placeholder="Phone Number">
@@ -371,7 +412,7 @@
                   </span>
               </div>
               <p id="trans">Transfer to same bank</p>
-              <p id="mon"><span>	&#8358</span> 0.00 </p>
+              <p id="monsame"><span>	&#8358</span> 0.00 </p>
             </div>
             <div id="transf4">
               <div id="tran4">
@@ -482,10 +523,10 @@
                               <img id="net" src="./images/images/remove.png" alt="">
                           </div>
                           <div id="icn1">
-                            <p>1234</p>
-                            <p>5678</p>
-                            <p>8765</p>
-                            <p>4321</p>
+                            <p id="key1">1234</p>
+                            <p id="key2">5678</p>
+                            <p id="key3">8765</p>
+                            <p id="key4">4321</p>
                           </div>
                           <div id="icn2">
                             <p id="expire">02/24</p>
@@ -517,9 +558,9 @@
                       </div>
                   </div>
                   <div id="box2">
-                      <button id="add"><span class="material-symbols-outlined">
+                      <button id="add" onclick="buycard()" ><span class="material-symbols-outlined">
                         add
-                        </span> Add card</button>
+                        </span> Buy card</button>
                         <div id="total">
                           <p >Current total</p>
                           <div id="amm">
@@ -553,7 +594,7 @@
           <div id="smallpin">
               <img id="success" src="./images/images/success.png" alt="">
               <P id="showsucess">Transfer successful</P>
-              <p id="hiiii"><span id="type"></span>&#8358;<span id="showamt2">hii</span> to <span id="thereceiver2"> <span id="yes"></span></span></p> 
+              <p id="hiiii"><span id="type"></span> <span id="none">&#8358;</span> <span id="showamt">hii</span> to <span id="thereceiver2"> <span id="yes"></span></span></p> 
             <button id="receipt" onclick="download()">Download Receipt</button>
           </div>
         </div>
@@ -571,7 +612,7 @@
            
         </div>
         <div id="pins2">
-          <button onclick="receiptd()" id="share">Save</button> <button onclick="closeall()" id="share">Close</button>
+          <button onclick="receiptd()" id="share">Save</button> <button onclick="closedall()" id="share">Close</button>
         </div>
        
       </div> 

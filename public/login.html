@@ -78,10 +78,16 @@
   }
 
 
+  let agreed = document.getElementById('open')
+
+
 
 
     function login() {
-      
+        agreed.innerHTML = `
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          <span class="visually-hidden" role="status">Fetching...</span>
+      `;
         firebase.auth().signInWithEmailAndPassword(email.value, password.value)
       .then((userCredential) => {
         var user = userCredential.user;

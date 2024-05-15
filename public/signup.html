@@ -136,7 +136,7 @@
           <p id="agree">I agree to Indemnity and T&Cs</p>
         </div>
         <button onclick="prev1()">Prev</button>
-        <button onclick="submmit(event)">SUBMIT</button>
+        <button id="agreeyes" onclick="submmit(event)">SUBMIT</button>
       </div>
     </div>
   </body>
@@ -246,9 +246,14 @@
                
    
   
+let agreed = document.getElementById('agreeyes')
 
   function submmit(ev) {
     ev.preventDefault();
+    agreed.innerHTML = `
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span class="visually-hidden" role="status">Saving...</span>
+  `;
     let genderselect = document.querySelector('input[name="gender"]:checked');
     console.log(genderselect ? genderselect.value : "No gender selected");
 
@@ -303,11 +308,16 @@
               gender: genderselect.value,
               balance: "5000",
               bvn:'',
-              username:'',
+              username:`${title.value} ${first.value} ${last.value}`,
               useraddress:'',
-              profileimage:'',
+              profileimage: 'https://source.unsplash.com/random/200x200/?portrait',
               pin: `${p1.value}${p2.value}${p3.value}${p4.value}`,
               account_number:gen,
+              key1: '',
+              key2: '1234',
+              key3: '5678', 
+              key4: '',
+              purchasedCard:false,
             })
             .then(() => {
               alert("profile updated!");
