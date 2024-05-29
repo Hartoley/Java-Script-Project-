@@ -986,7 +986,7 @@ function transferTransactionHistory() {
   //   });
 
   //   // Update the chart
-  //   transactionHistoryChart.update();
+  //   transactionHistoryChart.update();  q
   // });
 }
 
