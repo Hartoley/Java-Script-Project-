@@ -28,7 +28,7 @@
 <body>
 
     
-      <main>
+      <main id="fixed">
         <div id="horizontal">
           <div id="box11">
             <div id="prop">
@@ -350,10 +350,53 @@
            
             
         </div>
+        <div id="displaymycards">
+         
+             <div id="atmdisplay">
+                 <div id="kpatm">
+                   <img id="imgatm" src="./images/images/kp img.png" alt="">
+                   <p id="pay1">Pay</p>
+                 </div>
+                 <div id="icn">
+                     <img id="icp" src="./images/images/atm main.png" alt="">
+                     <img id="net" src="./images/images/remove.png" alt="">
+                 </div>
+                 <div id="icn1">
+                   <p id="key17">1234</p>
+                   <p id="key27">5678</p>
+                   <p id="key37">8765</p>
+                   <p id="key47">4321</p>
+                 </div>
+                 <div id="icn2">
+                   <p id="expire">02/24</p>
+                   <img id="master" src="./images/images/master.png" alt="">
+                   
+                 </div>
+                <div id="icn3">
+                   <p id="name1">Lexi Thompson</p>
+                </div>
+             </div>
+             <div id="atmdisplay1">
+               <div id="line">
+
+               </div>
+               <div id="line1">
+                 <p>Authorised Signature</p>
+                 <p>Not valid unless Signed</p>
+               </div>
+               <div id="line3">
+                 <div id="line4"></div>
+                 <p id="cvvnum1">123</p>
+               </div>
+               <p></p>
+             </div>
+            
+        
+        </div>
         <div id="history1">
           <h1 id="hello" style="margin-top: 10%;"></h1>
           <form class="mx-auto shadow w-50 px-5 py-3 mt-3" id="form">
-            <h1 class="text-muted text-center">Payment Gateway</h1>
+            <h1 class="text-white text-center">Payment Gateway</h1>
             <input name="username" class="form-control mt-3" required id="raveuser" type="text" placeholder="Description">
             <input name="email" class="form-control mt-3" required id="raveemail"  type="text" placeholder="Email">
             <input  class="form-control mt-3" required id="ravephone"  type="text" placeholder="Phone Number">
@@ -547,9 +590,9 @@
                         </div>
                         <div id="line3">
                           <div id="line4"></div>
-                          
+                            <p id="cvvnum">123</p>
                         </div>
-                        <p></p>
+                        
                       </div>
                       <div onclick="right()" id="arrows1" >
                         <span class="material-symbols-outlined">
@@ -593,8 +636,8 @@
           </div>
           <div id="smallpin">
               <img id="success" src="./images/images/success.png" alt="">
-              <P id="showsucess">Transfer successful</P>
-              <p id="hiiii"><span id="type"></span> <span id="none">&#8358;</span> <span id="showamt">hii</span> to <span id="thereceiver2"> <span id="yes"></span></span></p> 
+              <P id="showsucess">Transaction successful</P>
+              <p id="hiiii"><span id="type"></span> <span id="none">&#8358;</span> <span id="showamt7"></span> to <span id="thereceiver2"> <span id="yes"></span></span></p> 
             <button id="receipt" onclick="download()">Download Receipt</button>
           </div>
         </div>

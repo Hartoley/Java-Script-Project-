@@ -10,6 +10,7 @@ main{
     /* justify-content: space-between; */
     width: 100%;
     height: 150vh;
+  
  
    
  
@@ -58,6 +59,7 @@ nav{
     overflow-x: hidden;
     /* background-color: aqua; */
 }
+
 
 #dupli{
     width: 48%;
@@ -167,7 +169,7 @@ nav{
 
 #pin1{
     display: flex;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     align-items: center;
     width: 50%;
     justify-content: space-between;
@@ -327,6 +329,8 @@ body {
     width: 80%;
     height: 150vh;
     background-color:  rgb(82, 65, 145);
+    /* background: linear-gradient(to bottom, rgb(223, 212, 233), rgb(179, 163, 199), rgb(135, 114, 165)); */
+    border-radius: 10px;
     margin-left: 20%;
     /* background-color: rgb(247,247,247); */
 }
@@ -760,6 +764,48 @@ option{
  
 }
 
+#atmdisplay{
+    width: 45%;
+    height: 45%;
+    background-color: rgb(12, 2, 44);
+    border-radius: 10px;
+    color: aliceblue;
+    left: 0;
+    transition: all 1s ease;
+ 
+}
+
+#atmdisplay1{
+    width: 45%;
+    height: 45%;
+    background-color: black;
+    border-radius: 10px;
+    color: aliceblue;
+    left: 0;
+    transition: all 1s ease;
+ 
+}
+
+#displaymycards{
+    width: 70%;
+    height: 75vh;
+    margin-top: 10%;
+    /* justify-content: space-evenly; */
+    /* background-color: rgb(179, 163, 199); */
+    background: linear-gradient(to bottom, rgb(223, 212, 233), rgb(179, 163, 199), rgb(135, 114, 165));
+    border-radius: 10px;
+    padding-top: 1rem;
+    gap: 1rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+
+
 #atm1{
     width: 100%;
     height: 90%;
@@ -999,6 +1045,23 @@ option{
     align-items: center;
 }
 
+#cvvnum{
+    font-size: 9px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-style: italic;
+}
+
+#cvvnum1{
+    font-size: 9px;
+    margin-top: auto;
+    color: blue;
+    margin-left: auto;
+    /* background-color: brown; */
+    margin-bottom: auto;
+    font-style: italic;
+}
+
 #line4{
     width: 85%;
     /* margin-left: 10px; */
@@ -1227,7 +1290,7 @@ th, td {
     margin-left: -50%;
     padding-top: 10px;
     z-index: 3;
-    margin-top: 40%;
+    /* margin-top: 10%; */
     border-radius: 20px;
     display: flex;
     display: none;
@@ -1271,7 +1334,8 @@ th, td {
 #pincontainer{
     /* margin-top: 20vh; */
     display: flex;
-    align-items: center;
+    padding-top: 10vh;
+    /* align-items: center; */
     justify-content: center;
     display: none;
     height: 100%;
@@ -1502,7 +1566,7 @@ th, td {
     margin-left: -50%;
     padding-top: 10px;
     z-index: 3;
-    margin-top: 50vh;
+    /* margin-top: 10vh; */
     border-radius: 20px;
     display: flex;
     display: none;
@@ -1832,9 +1896,15 @@ input::placeholder {
         height: 47%;
     }
 
+    #box7{
+        height: 70vh;
+        width: 100%;
+    }
+
     #box1{
         height: 25%;
     }
+
 
     #atm{
         height: max-content;

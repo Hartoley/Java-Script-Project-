@@ -13,7 +13,10 @@ let pins2 = document.getElementById("pins2");
 let description = document.getElementById("descript");
 let inptre = document.getElementById("inputre");
 let pincontainer = document.getElementById("pincontainer")
+let showamt7 = document.getElementById("showamt7");
 let none = document.getElementById('none')
+let displaymycards = document.getElementById("displaymycards")
+let add = document.getElementById("add")
 let p1 = document.getElementById("p1");
 let p2 = document.getElementById("p2");
 let p3 = document.getElementById("p3");
@@ -28,6 +31,8 @@ let p31 = document.getElementById("p31");
 let p41 = document.getElementById("p41");
 let atm = document.getElementById("atm");
 let atm1 = document.getElementById("atm1");
+let cvvnum =document.getElementById("cvvnum")
+let cvvnum1 =document.getElementById("cvvnum1")
 let phonenum = document.getElementById("phonenum");
 let senditt2 = document.getElementById("senditt2");
 let senditt6 = document.getElementById("senditt6");
@@ -89,12 +94,18 @@ let receipt = document.getElementById("receipt");
 let verified = document.getElementById("send44");
 let receipt2 = document.getElementById("receipt2");
 let key1 = document.getElementById("key1")
+let key17 = document.getElementById("key17")
+let key27 = document.getElementById("key27")
+let key37 = document.getElementById("key37")
+let key47 = document.getElementById("key47")
+let fixed = document.getElementById("fixed")
 const userslist = [];
 let foundUser = null;
 let lasttransactionsHTML = "";
 let tbody1HTML = "";
 const storageRef = firebase.storage().ref();
 let namere = document.getElementById("name")
+let named = document.getElementById("name1")
 let outcome = "";
 let profp = document.getElementById("profp");
 
@@ -345,16 +356,25 @@ function isloggedin() {
             profp.src = doc.data().profileimage;
             amount.innerHTML = `${doc.data().balance}`;
             welcome.innerHTML = doc.data().username;
-            key1.innerHTML = "****"
-            key2.innerHTML = doc.data().key2
-            key3.innerHTML = doc.data().key3
-            key4.innerHTML = "****"
+            key1.innerHTML = "****";
+            key2.innerHTML = doc.data().key2;
+            key3.innerHTML = doc.data().key3;
+            key4.innerHTML = "****";
+            key17.innerHTML = doc.data().key1
+            key27.innerHTML = doc.data().key2
+            key37.innerHTML = doc.data().key3
+            key47.innerHTML = doc.data().key4
+
+            cvvnum.innerHTML= doc.data().cvv
+            cvvnum1.innerHTML= doc.data().cvv
             move.innerHTML = `Welcome to your dashboard ${doc.data().username}, Happy banking!!!`;    
           }  if (doc.data().purchasedCard == true) {
             namere.innerHTML = `${doc.data().firstname} ${doc.data().lastname}`;
+            named.innerHTML = `${doc.data().firstname} ${doc.data().lastname}`;
+            add.innerHTML= "View Card details"
           } else {
-            console.log(error);
-            console.log("No such document!");
+            console.log("Purchased card not found!");
+            
           }
         })
         .catch((error) => {
@@ -430,7 +450,9 @@ foundreceiver();
 function transfer1() {
   if (foundUser) {
     thereceiver.innerHTML = `${foundUser.firstname} ${foundUser.lastname}`;
-    showamt.innerHTML = verified.value;
+    console.log(verified.value);
+    showamt2.innerHTML = verified.value;
+    fixed.style.position ="fixed"
     pincontainer.style.display = "flex";
     pin.style.display = "flex";
   } else {
@@ -562,6 +584,7 @@ function transfer() {
                         type.innerHTML = "You've successfully transfered ";
                         thereceiver.innerHTML = `${foundUser.firstname} ${foundUser.lastname}`;
                         thereceiver2.innerHTML = `${foundUser.firstname} ${foundUser.lastname}`;
+                        console.log(verified.value);
                         showamt2.innerHTML = verified.value;
                         showamt.innerHTML = verified.value;
 
@@ -834,6 +857,7 @@ function closedall() {
   pins2.style.display = "none";
   piner.style.display = "none";
   pincontainer.style.display = "none"
+  fixed.style.position ="static"
 }
 
 
@@ -848,17 +872,21 @@ function distransactions() {
   dashsettings.style.display = "none";
   form.style.display = "none";
   history1.style.display = "none";
+   fixed.style.position ="static"
+   displaymycards.style.display= "none"
+ 
 }
 
 function payment() {
   big.style.display = "none";
+  fixed.style.position ="fixed"
   transfersh.style.display = "none";
   dishistory.style.display = "none";
   history1.style.display = "block";
-  // hello.style.display = "none";
   dashsettings.style.display = "none";
+  displaymycards.style.display= "none"
   form.style.display = "block";
-  // menu.style.display = "none";
+ 
 }
 
 function dashsetting() {
@@ -868,6 +896,8 @@ function dashsetting() {
   dashsettings.style.display = "flex";
   form.style.display = "none";
   history1.style.display = "none";
+  displaymycards.style.display= "none"
+  fixed.style.position ="static"
   
   
 }
@@ -880,6 +910,8 @@ function home() {
   history1.style.display = "none";
   dashsettings.style.display = "none";
   // menu.style.display = "none";
+   fixed.style.position ="static"
+   displaymycards.style.display= "none"
   
 }
 
@@ -1014,6 +1046,8 @@ function cancel() {
   pin.style.display = "none";
   pined.style.display = "none";
   pindebit.style.display = "none";
+  fixed.style.position ="static"
+  
 }
 
 function cancel1() {
@@ -1021,6 +1055,7 @@ function cancel1() {
   pins1.style.display = "none";
   piner.style.display = "none";
   pincontainer.style.display = "none"
+  fixed.style.position ="static"
   // menu.style.display = "none";
   // pindebit.style.display = "none";
 }
@@ -1031,7 +1066,7 @@ function buyairtime() {
       <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
       <span class="visually-hidden" role="status">Loading...</span>
   `;
-  let airtimeamt = document.getElementById("airtimeamt");
+ 
 
   firebase.auth().onAuthStateChanged((user) => {
     if (airtimeamt.value == "" || phonenum.value == "" || phonenum.value < 11) {
@@ -1082,7 +1117,7 @@ function buyairtime() {
                     console.log("Balance updated successfully!");
                     for (let inde = 0; inde < 10; inde++) {
                       randomnumber = Math.floor(Math.random() * 10);
-                      console.log(randomnumber);
+                      // console.log(randomnumber);
                       gen += randomnumber;
                     }
 
@@ -1130,7 +1165,7 @@ function buyairtime() {
                                 `;
                         });
                         thereceiver2.innerHTML = phonenum.value;
-                        showamt2.innerHTML = airtimeamt.value;
+                        showamt7.innerHTML = airtimeamt.value;
                         type.innerHTML = "Airtime purchase of ";
                         yes.innerHTML = "successful";
                         p11.value = "";
@@ -1203,8 +1238,11 @@ function transfer2() {
   } else if (phonenum.value.length !== 11) {
     alert("Invalid phone number");
   } else {
+    fixed.style.position ="fixed"
     thereceiver1.innerHTML = phonenum.value;
+    console.log(airtimeamt.value);
     showamt1.innerHTML = airtimeamt.value;
+    console.log(showamt1.innerHTML);
     pincontainer.style.display = "flex";
     pined.style.display = "flex";
   }
@@ -1405,15 +1443,44 @@ function menubar(){
 }
 
 function buycard (){
-    let card = document.getElementById("ares")
-    let tos = document.getElementById("tos")
-    pincontainer.style.display = "flex";
-    pindebit.style.display = "flex";
 
-    card.innerHTML= "You wil be debited"
-    showamts.innerHTML = "1200"
-    tos.innerHTML = "for"
-    thereceivers.innerHTML= "Debit cards purchase"
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+  const email = user.email;
+  db.collection("Profile")
+  .doc(email)
+  .get()
+  .then((doc) => {
+    if (doc.exists) {
+    if (doc.data().purchasedCard == true) {
+      big.style.display = "none";
+      fixed.style.position ="fixed"
+      transfersh.style.display = "none";
+      dishistory.style.display = "none";
+      dashsettings.style.display = "none";
+      displaymycards.style.display ="flex"
+    
+    }else{
+      let card = document.getElementById("ares")
+      let tos = document.getElementById("tos")
+      pincontainer.style.display = "flex";
+      pindebit.style.display = "flex";
+  
+      card.innerHTML= "You wil be debited"
+      showamts.innerHTML = "1200"
+      tos.innerHTML = "for"
+      thereceivers.innerHTML= "Debit cards purchase"
+    }
+  } else {
+    console.log("No such document!");
+  }
+  })
+  .catch((error) => {
+    console.log("Error getting document: ", error);
+  });
+
+}
+})
 
 
 }
@@ -1424,6 +1491,10 @@ function debitcard() {
   gen2 = "";
   gen3 = "";
   gen4 = "";
+  cvvpin = "" ;
+  
+
+  
   
   senditt6.innerHTML = `
       <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -1434,6 +1505,14 @@ function debitcard() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const email = user.email;
+        for (let cvv = 0; cvv < 3; cvv++) {
+          randomcvv = Math.floor(Math.random() * 4);
+          // console.log(randomcvv);
+          cvvpin += randomcvv;
+          
+        }
+        console.log(cvvpin);
+
         for (let inde = 0; inde < 10; inde++) {
           randomnumber = Math.floor(Math.random() * 10);
           console.log(randomnumber);
@@ -1492,6 +1571,7 @@ function debitcard() {
                     key2: gen2,
                     key3: gen3, 
                     key4:gen4,
+                    cvv:cvvpin,
                     purchasedCard:true,
                   })
 
@@ -1533,7 +1613,7 @@ function debitcard() {
                       .then(() => {
                         
                         thereceivers.innerHTML = "Debit card"
-                        showamt.innerHTML = "1200";
+                        showamt7.innerHTML = "1200";
                         
                         type.innerHTML = "Purchase of debit card";
                         yes.innerHTML = "successful";
