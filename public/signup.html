@@ -331,24 +331,27 @@ let agreed = document.getElementById('agreeyes')
               purchasedCard:false,
             })
             .then(() => {
-              // alert("profile updated!");
+
                errorMsg.innerHTML = "profile updated!"
                errorMsg.innerHTML = "Registration succesful!"
-              // alert("Registration succesful");
               const user = firebase.auth().currentUser;
-
+              console.log(user);
           user.updateProfile({
             displayName: first.value + ' ' + last.value
-            // photoURL: "https://example.com/jane-q-user/profile.jpg"
+            
+            
           }).then(() => {
-            // Update successful
-            // ...
+            // firebase.user.sendEmailVerification()
+            //   .then(() => {
+            //     alert('email sent')
+            //   });
+              console.log(user);
+              // window.location.href = "login.html"; 
           }).catch((error) => {
             // An error occurred
             // ...
           });  
-          window.location.href = "login.html"; 
-          console.log(user);
+         
             })
             .catch((error) => {
               agreed.innerHTML = 'SUBMIT'
