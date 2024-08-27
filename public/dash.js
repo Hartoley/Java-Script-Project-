@@ -11,6 +11,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 let pins2 = document.getElementById("pins2");
 let description = document.getElementById("descript");
+let accNum = document.getElementById('accNum')
 let inptre = document.getElementById("inputre");
 let pincontainer = document.getElementById("pincontainer")
 let showamt7 = document.getElementById("showamt7");
@@ -356,6 +357,7 @@ function isloggedin() {
             profp.src = doc.data().profileimage;
             amount.innerHTML = `${doc.data().balance}`;
             welcome.innerHTML = doc.data().username;
+            accNum.innerHTML = doc.data().account_number
             key1.innerHTML = "****";
             key2.innerHTML = doc.data().key2;
             key3.innerHTML = doc.data().key3;
