@@ -153,7 +153,7 @@
 
   const app = firebase.initializeApp(firebaseConfig);
 </script>
-<script src="https://api.sendgrid.com/js/sendgrid-1.0.0.js"></script>
+
 <script>
   let title = document.getElementById("title");
   let first = document.getElementById("first");
@@ -176,10 +176,6 @@
   let p4 = document.getElementById("p4");
   let gender = document.getElementById("gender");
   let = document.getElementById("");
-
-  sg.setApiKey("YOUR_SENDGRID_API_KEY");
-
-
 
   function pinn() {
     if (p1.value.length == 1) {
@@ -252,7 +248,6 @@
   
 let agreed = document.getElementById('agreeyes')
 
-
   function submmit(ev) {
     ev.preventDefault();
     agreed.innerHTML = `
@@ -296,7 +291,7 @@ let agreed = document.getElementById('agreeyes')
             
             const db = firebase.firestore();
 
-         
+          // Add a new document in collection "cities"
            db.collection("Profile").doc( user.email )
             .set({
               title: title.value,
@@ -330,40 +325,17 @@ let agreed = document.getElementById('agreeyes')
               alert("Registration succesful");
               const user = firebase.auth().currentUser;
 
-        user.updateProfile({
-          displayName: first.value + ' ' + last.value
-         
-        }).then(() => {
-          const msg = {
-          to: email.value,
-          from: 'keenapay@gmail.com',
-          subject: 'Welcome to Keena Pay',
-          text:  `Hello ${first.value} ${last.value},
-
-            Welcome to the world of seamless payments with Keena Pay! 🎉
-
-            We're thrilled to have you join our community. Your account is now ready to go. 
-
-            Get started by [link to activation or tutorial].
-
-            Experience the future of payments today!
-
-            Best regards,
-            The Keena Pay Team`
-        };
-
-        sg.mail(msg)
-          .then(response => {
-            console.log('Email sent');
-            console.log(response);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-        }).catch((error) => {
-        
-        });  
-          // window.location.href = "login.html"; 
+          user.updateProfile({
+            displayName: first.value + ' ' + last.value
+            // photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Update successful
+            // ...
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });  
+          window.location.href = "login.html"; 
           console.log(user);
             })
             .catch((error) => {
@@ -381,7 +353,5 @@ let agreed = document.getElementById('agreeyes')
           // ..
         });
     }
-
-    
   }
 </script>
