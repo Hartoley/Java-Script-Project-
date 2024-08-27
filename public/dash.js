@@ -1146,7 +1146,7 @@ function buyairtime() {
                         lasttransactions.innerHTML += `
                         <div id="lasttrans">
                         <img id="debitimg" src="images/images/credit2.png" alt="">
-                        <h4 id="lastp"> ${doc.data().receipientNum}<h4/>
+                        <h4 id="lastp" > ${doc.data().receipientNum}<h4/>
                         <p id="lastpp">- N ${doc.data().amount}<p/>
                         </div>
                         `;
@@ -1485,7 +1485,7 @@ function buycard (){
 
 }
 
-function debitcard() {
+function debit() {
   
   gen1 = "";
   gen2 = "";

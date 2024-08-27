@@ -998,7 +998,9 @@ option{
 #lastp{
     font-size: 14px;
     font-weight: 300;
-    margin-right: 10%;
+    width: 50%;
+    height: auto;
+    /* background-color: red; */
    
 }
 
