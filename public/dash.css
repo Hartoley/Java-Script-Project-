@@ -158,6 +158,13 @@ nav{
     margin-top: 20px;
 }
 
+#username1{
+    color: rgb(246, 245, 252);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
 .userinp{
     width: 85%;
     height: 40px;
