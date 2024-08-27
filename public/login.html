@@ -26,12 +26,14 @@
     <img src="../public/images/images/vid4.jpg" alt="pic7">
 </div>
     <div id="div1">
-        <p>Email address</p>
-        <input id="email" type="email">
+      <p>Email address</p>
+     <div class="email">   
+          <input id="email" type="email">
+
+     </div>
         <p>Password</p>
-        <div id="pasw">
+      <div id="pasw">
         <input id="password" type="password">
-        <button id="open" onclick="login()">LOG IN</button>
         <span onclick="hide()" class="material-symbols-outlined" id="hideeye">
             visibility_off
           </span>
@@ -39,6 +41,10 @@
             visibility
           </span>
     </div> 
+    <div class="button">
+      <p id="msg"></p>
+      <button id="open" onclick="login()">LOG IN</button>
+    </div>
     <p id="forgot" onclick="forgot()">Forgot Password?</p>
 
     </div>
@@ -63,6 +69,7 @@
 <script >
     let email= document.getElementById('email')
     let password= document.getElementById('password')
+    let message =document.getElementById('msg')
 
     function show() {
     password.type = "text";
@@ -84,6 +91,7 @@
 
 
     function login() {
+        message.innerHTML= ""
         agreed.innerHTML = `
           <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
           <span class="visually-hidden" role="status">Fetching...</span>
@@ -91,7 +99,8 @@
         firebase.auth().signInWithEmailAndPassword(email.value, password.value)
       .then((userCredential) => {
         var user = userCredential.user;
-        alert("login successful")
+        message.innerHTML= "login successful"
+        // alert("login successful")
         window.location.href= "dash.html"
        
       })
@@ -100,7 +109,8 @@
         var errorMessage = error.message;
         console.log(errorMessage);
         agreed.innerHTML = 'Log in'
-        alert('User not found')
+        message.innerHTML= "User not found"
+        // alert('User not found')
       });
     }
 
