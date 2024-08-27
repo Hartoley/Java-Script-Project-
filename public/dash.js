@@ -357,7 +357,6 @@ function isloggedin() {
             profp.src = doc.data().profileimage;
             amount.innerHTML = `${doc.data().balance}`;
             welcome.innerHTML = doc.data().username;
-            accNum.innerHTML = doc.data().account_number
             key1.innerHTML = "****";
             key2.innerHTML = doc.data().key2;
             key3.innerHTML = doc.data().key3;
@@ -369,6 +368,7 @@ function isloggedin() {
 
             cvvnum.innerHTML= doc.data().cvv
             cvvnum1.innerHTML= doc.data().cvv
+            accNum.innerHTML = doc.data().account_number;
             move.innerHTML = `Welcome to your dashboard ${doc.data().username}, Happy banking!!!`;    
           }  if (doc.data().purchasedCard == true) {
             namere.innerHTML = `${doc.data().firstname} ${doc.data().lastname}`;

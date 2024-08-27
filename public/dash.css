@@ -995,6 +995,10 @@ option{
     gap: 0.5rem;
 }
 
+#accNum{
+    color: rgb(246, 245, 252);
+}
+
 #lastp{
     font-size: 14px;
     font-weight: 300;
