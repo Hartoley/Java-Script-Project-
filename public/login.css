@@ -91,10 +91,11 @@ body {
 }
 
 #forgot{
-    padding-top: 10%;
-   padding-left: 40%;
+    margin-top: -10%;
+   padding-left: 60%;
    /* background-color: brown; */
     text-decoration: underline;
+    height: 40px;
 }
 
 #forgot:hover{
@@ -109,7 +110,7 @@ input{
     /* background-color: rgba(236, 80, 135, 0) ; */
     margin-left: 40px;
     outline: none;
-    border: solid  rgb(39, 15, 126);;
+    border: solid  rgb(39, 15, 126);
     font-weight: 500;
 }
 #password{
@@ -123,7 +124,7 @@ input{
 
 .email{
     width: 70%;
-    height: 80px;
+    height: 40px;
     border: solid  rgb(39, 15, 126);;
     border-radius: 5px;
     background-color:  rgba(128, 60, 83, 0);
@@ -140,6 +141,7 @@ input{
     align-items: end;
     height: auto;
     width: 95%;
+    height: 40%;
 }
 #email{
     margin-left: 0;
@@ -166,9 +168,11 @@ input{
 
 #showeye {
     cursor: pointer;
+    color: rgb(39, 15, 126);
   }
   #showeye {
     cursor: pointer;
+    color: rgb(39, 15, 126);
   }
   #hideeye {
     display: none;
@@ -202,5 +206,13 @@ input{
     #animation-container, #animation-container img{
         width: 100%;
         height: 100vh;
+    }
+
+    #hideeye{
+        font-size: 12px;
+    }
+
+    #showeye{
+        font-size: 14px;
     }
 }
