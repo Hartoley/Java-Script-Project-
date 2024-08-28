@@ -196,11 +196,17 @@ input{
     /* background-image: linear-gradient(to right, rgb(119, 119, 186)
      , rgb(74, 74, 186)); */
 }
-@media(width: 375px ){
-    #div1{
+
+
+@media (min-width: 370px) and (max-width: 385px) {
+    #div1 {
         width: 70%;
         height: 70%;
-        /* background-color: red; */
+        /* background-color:red; */
+    }
+
+    .button{
+        margin-top: -75px;
     }
 }
 
