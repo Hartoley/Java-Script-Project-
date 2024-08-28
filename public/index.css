@@ -3,6 +3,7 @@
     padding: 0;
 }
 
+
 #main{
     width: 100%;
     height: 18vh;
@@ -41,7 +42,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 100px;
+    width: 5%;
   
 }
 
@@ -82,11 +83,9 @@ nav{
 }
 
 #small1{
-    
-    width: 100%;
-    height: 100vh;
-  
-   
+   width: 100%;
+    height: 100vh;  
+    background-color: red;
     
 }
 
@@ -239,7 +238,7 @@ img{
 
 #lets{
     font-weight: 400;
-    font-size: 17px;
+    font-size: 25px;
     line-height: 25.5px;
     color:  rgb(19, 17, 17);
 }
