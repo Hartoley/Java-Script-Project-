@@ -376,3 +376,184 @@ img{
     background-image: linear-gradient(to right, rgb(119, 119, 186)
      , rgb(74, 74, 186));
 }
+
+
+
+@media  (max-width: 430px){
+    #main{
+        height: 5vh;
+        
+    }
+
+    #register{
+        height: 5vh;
+        /* background-color: red; */
+        width: 90%;
+        font-size: 4px;
+        align-items: center;
+        text-align: center;
+    }
+
+    #register p{
+        margin-top: 15px;
+    }
+
+    #internet{
+        width: 42px;
+        height: 10px;
+        font-size: 3px;
+    }
+
+
+    #pay{
+       width: 100px; 
+    }
+
+    #main span{
+        font-size: 3px;
+    }
+    #img{
+        height: 15vh;
+    }
+
+   
+
+    #h3{
+        font-size: 5px;
+        display: none;
+    }
+
+    #small1{
+        height: auto;
+    }
+
+    #open{
+        width: 100px;
+        height: 30px;
+        font-size: 5px;
+        margin: 0 5px;
+    }
+
+    #logo{
+        width: 30px;
+        height: 10px;
+    }
+
+    nav{
+        height: 5vh;
+    }
+
+  
+
+    #div2{
+        height: 100%;
+        width: 40%;
+        /* margin-top: 50px; */
+        margin-left: 10px;
+        /* padding-left: 5px; */
+    }
+
+    #div3{
+        height: 100%;
+        /* margin-top: 20px; */
+    }
+
+    #img1{
+        height: 100%;
+    }
+
+    #div1{
+        height: 30vh;
+        /* justify-content: end; */
+        /* background-color: red; */
+        
+    }
+    #hh1{
+        width: 200px; 
+        font-size: 10px;
+        line-height: 15px;
+     }
+
+ 
+ 
+    #hh2{
+        width: 200px; 
+        font-size: 10px;
+        line-height: 15px;
+     }
+ 
+    #hh3{
+       width: 200px; 
+       font-size: 8px;
+       line-height: 15px;
+    }
+    #h3{
+        font-size: 4px;
+        margin-left: 0;
+    }
+
+    #lets{
+        font-size: 10px;
+        line-height: 10px;
+        margin-top: 10px;
+    }
+    #serving{
+        font-weight: 500;
+        font-size: 20px;
+        color: wheat;
+        /* width: 50%; */
+        line-height: 25px;
+    }
+
+    #asthe{
+        font-weight: 500;
+        font-size: 15px;
+        width: 55%;
+    }
+    
+    #finds{
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    #get{
+        font-size: 10px;
+        line-height: 15px;
+        width: 100px;
+        height: 20px;
+    }
+
+    #get1{
+        font-size: 10px;
+        line-height: 15px;
+        width: 100px;
+        height: 20px;
+    }
+
+    #icons1{
+       
+        font-size: 24px;
+    }
+
+    #new{
+       font-size: 8px; 
+    }
+
+    #box2{
+        height: 5vh;
+    }
+
+    #box1{
+        height: auto;
+    
+    }
+
+    #small2{
+        width: 100%;
+        height: auto;
+    
+    }
+
+
+
+}
