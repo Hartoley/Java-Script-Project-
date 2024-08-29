@@ -1965,5 +1965,17 @@ input::placeholder {
     #mon, #mon1{
         margin-top: -3px;
     }
+
+    marquee{
+        font-size: 12px;
+    }
+
+    #mon1{
+       margin-top: 2px;
+    }
+
+    #airtimeamt, #inputre, #phonenum{
+        font-size: 12px;
+    }
    
 }
