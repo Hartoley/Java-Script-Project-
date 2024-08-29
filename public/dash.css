@@ -2054,5 +2054,16 @@ input::placeholder {
     height: 4vh;
    }
 
+   #material{
+    font-weight: 200;
+    font-size: 15px;
+    margin-top: -10px;
+    /* display: none; */
+}
+
+#bell span{
+    font-size: 8px;
+}
+
 
 }
