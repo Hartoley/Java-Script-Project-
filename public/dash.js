@@ -9,6 +9,8 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+let alertme = document.getElementById('alertme')
+let alertYes =document.getElementById('liveAlertPlaceholder')
 let pins2 = document.getElementById("pins2");
 let description = document.getElementById("descript");
 let accNum = document.getElementById('accNum')
@@ -357,6 +359,7 @@ function isloggedin() {
             profp.src = doc.data().profileimage;
             amount.innerHTML = `${doc.data().balance}`;
             welcome.innerHTML = doc.data().username;
+            accNum.innerHTML = doc.data().account_number;
             key1.innerHTML = "****";
             key2.innerHTML = doc.data().key2;
             key3.innerHTML = doc.data().key3;
@@ -368,7 +371,6 @@ function isloggedin() {
 
             cvvnum.innerHTML= doc.data().cvv
             cvvnum1.innerHTML= doc.data().cvv
-            accNum.innerHTML = doc.data().account_number;
             move.innerHTML = `Welcome to your dashboard ${doc.data().username}, Happy banking!!!`;    
           }  if (doc.data().purchasedCard == true) {
             namere.innerHTML = `${doc.data().firstname} ${doc.data().lastname}`;
@@ -488,7 +490,8 @@ function transfer() {
               sender.data().pin
             ) {
               if (transferamt <= 0 || transferamt > currentuserbal) {
-                alert("Invalid Transfer Amount");
+                senditt.innerHTML = 'Send'
+                alert("Insuficient Balance");
               } else {
                 for (let inde = 0; inde < 10; inde++) {
                   randomnumber = Math.floor(Math.random() * 10);
@@ -588,7 +591,7 @@ function transfer() {
                         thereceiver2.innerHTML = `${foundUser.firstname} ${foundUser.lastname}`;
                         console.log(verified.value);
                         showamt2.innerHTML = verified.value;
-                        showamt.innerHTML = verified.value;
+                        showamt7.innerHTML = verified.value;
 
                         receipt2.innerHTML = `
                           <p class="treceipt" id="Dated">Transaction Date: <span> ${day} ${month}, ${year}, ${hour}hr ${minute}min ${second}scs</span></p>
@@ -1073,6 +1076,7 @@ function buyairtime() {
   firebase.auth().onAuthStateChanged((user) => {
     if (airtimeamt.value == "" || phonenum.value == "" || phonenum.value < 11) {
       alert("Kindly fill all input fields");
+       senditt2.innerHTML = 'Pay'
     } else {
       if (user) {
         const email = user.email;
@@ -1089,7 +1093,9 @@ function buyairtime() {
               // console.log("New balance: ", newBalance);
 
               if (airtimeamt.value > balance) {
+                alertme.style.display = "flex"
                 alert("Insufficient Balance");
+                senditt2.innerHTML = 'Pay'
               } else if (
                 `${p11.value}${p21.value}${p31.value}${p41.value}` !==
                 doc.data().pin
@@ -1236,6 +1242,9 @@ function buyairtime() {
 
 function transfer2() {
   if (airtimeamt.value === "" || phonenum.value === "") {
+    // fixed.style.position ='fixed'
+    // pincontainer.style.display ='flex'
+    // alertme.style.display= "flex"
     alert("Kindly fill all input fields");
   } else if (phonenum.value.length !== 11) {
     alert("Invalid phone number");

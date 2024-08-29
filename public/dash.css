@@ -10,6 +10,7 @@ main{
     /* justify-content: space-between; */
     width: 100%;
     height: 150vh;
+    /* position: fixed; */
 
   
  
@@ -1299,7 +1300,7 @@ th, td {
 
 #pin{
     width: 35%;
-    height: 78vh;
+    height: 85vh;
     background-color: rgb(26, 8, 56);
     margin-left: -50%;
     padding-top: 10px;
@@ -1311,6 +1312,15 @@ th, td {
     flex-direction: column;
     align-items: center;
     
+}
+
+#alertme{
+    background-color: rebeccapurple;
+    margin-left: -50%;
+    width: 50%;
+    height: 30vh;
+    color: red;
+    display: none;
 }
 
 #pindebit{
@@ -1575,7 +1585,7 @@ th, td {
 
 #pined{
     width: 35%;
-    height: 78vh;
+    height: 85vh;
     background-color: rgb(26, 8, 56);
     margin-left: -50%;
     padding-top: 10px;
@@ -1934,6 +1944,26 @@ input::placeholder {
         font-size: 6px;
     }
 
+    #smallii{
+        display: none;
+    }
 
+    #big2{
+        width: 95%;
+    }
+
+    #monsame{
+        font-size: 12px;
+        margin-top: -3px;
+    }
+
+    #bbig1{
+        margin-top: 10px;
+        height: 60vh;
+    }
+
+    #mon, #mon1{
+        margin-top: -3px;
+    }
    
 }
