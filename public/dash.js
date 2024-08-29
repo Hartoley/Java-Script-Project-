@@ -72,6 +72,8 @@ let move = document.getElementById("move");
 let founduserslist = false;
 let sender = null;
 let pins = document.getElementById("pins");
+let menu2 =document.getElementById('menubar')
+let menu1 =document.getElementById('menubar1')
 let big = document.getElementById("big");
 let transfersh = document.getElementById("transfer");
 let history1 =document.getElementById("history1")
@@ -461,6 +463,8 @@ function transfer1() {
     pin.style.display = "flex";
   } else {
     alert("invalid user");
+
+
   }
 }
 
@@ -1450,6 +1454,17 @@ function menubar(){
   menu.style.display = "flex"
   menu.style.width ="30%"
   menu.style.zIndex = "5"
+  menu1.style.display="flex"
+  menu2.style.display ="none"
+
+}
+
+function menubar1(){
+  menu.style.display = "none"
+  menu1.style.display ="none"
+  menu2.style.display="flex"
+  menu.style.width ="0"
+  // menu.style.zIndex = "5"
 
 }
 

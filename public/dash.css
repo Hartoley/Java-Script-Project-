@@ -29,6 +29,17 @@ main{
     display: none;
 }
 
+#menubar1{
+    color: rgb(250, 249, 253);
+    width: 6%;
+    height: 100%;
+    /* border: solid 1px rgb(147,147,147); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
 
 
 nav{
@@ -1838,6 +1849,10 @@ input::placeholder {
     #menubar{
         display: flex;
     }
+/* 
+    #menubar{
+        display: none;
+    } */
 
     #transfer{
         flex-wrap: wrap;
