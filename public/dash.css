@@ -1891,6 +1891,8 @@ input::placeholder {
 
     #send{
         height: 26%;
+        border-bottom: solid 1px rgb(178, 149, 231);
+        margin-bottom: 2px;
     }
 
     #trans, #mon{
@@ -1919,6 +1921,7 @@ input::placeholder {
 
     #big2{
         height: 100%;
+        width: 100%;
     }
     #lastme{
         /* background-color: black; */
@@ -1965,9 +1968,7 @@ input::placeholder {
         display: none;
     }
 
-    #big2{
-        width: 95%;
-    }
+  
 
     #monsame{
         font-size: 12px;
@@ -2052,4 +2053,6 @@ input::placeholder {
     width: 100px;
     height: 4vh;
    }
+
+
 }
