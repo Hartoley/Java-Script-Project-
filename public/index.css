@@ -14,7 +14,7 @@ nav{
     height: 18vh;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     position: fixed;
     background-color: white;
     z-index: 5;
@@ -30,6 +30,12 @@ nav{
     font-family: rob;font-family: "Roboto", sans-serif;
     font-weight: 400;
     color: rgb(147,147,147);
+}
+
+#register p{
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 #logo{
     display: flex;
@@ -49,7 +55,7 @@ nav{
 #h3{
     font-size: 40px;
     color: rgb(3, 3, 91);
-    margin-left: -30px;
+    margin-left: -40px;
 }
 
 #internet{
