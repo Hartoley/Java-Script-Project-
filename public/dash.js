@@ -1480,7 +1480,6 @@ function buycard (){
     if (doc.exists) {
     if (doc.data().purchasedCard == true) {
       big.style.display = "none";
-      fixed.style.position ="fixed"
       transfersh.style.display = "none";
       dishistory.style.display = "none";
       dashsettings.style.display = "none";
@@ -1489,9 +1488,9 @@ function buycard (){
     }else{
       let card = document.getElementById("ares")
       let tos = document.getElementById("tos")
+      fixed.style.position ="fixed"
       pincontainer.style.display = "flex";
       pindebit.style.display = "flex";
-  
       card.innerHTML= "You wil be debited"
       showamts.innerHTML = "1200"
       tos.innerHTML = "for"
