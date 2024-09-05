@@ -322,8 +322,7 @@ img{
     font-size: 74px;
 }
 
-#div4{
-    
+#div4{  
     width: 100%;
     padding: 50px;
     display: flex;
@@ -331,7 +330,8 @@ img{
     font-family: rob;font-family: "Roboto", sans-serif;
     color: gray;
     justify-content: space-evenly;
-    background-color: rgb(44, 6, 19);
+    background-image: linear-gradient(to right, rgb(64, 64, 147)
+     , rgb(3, 3, 91));
 }
 
 #hh1{
